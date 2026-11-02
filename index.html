@@ -682,7 +682,7 @@ body.touch.started .tap{display:block}
 
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='0+oAafeML0nAS9s54of17fvybCVeFTO25DPzcG0F5BMcKzEBit8SVJDmI6eq21mh5IYxRY+1CnhL5aEpsR06vmL3DcF8Jd9RXbHFm8hS+OoTpZmFBqs7cArhFVowk8p8h2XrAUJhNofkRLweR6dxfH8K';
+  const RIDER='2XuuKuZmUTjOW+XWAdrYZwg+mfXcIoo9lUAjmZtOBcBbMCzw+sYw3M73OZpJ9NdKUUDViNbT0xk7zAA2ogWE1QxDHjXEbrajc3NFayQJeyFitiM6ACQ7Ot6IAWePFY/9O3iGuJGStPDf/cSFeyjhxv20';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
@@ -701,7 +701,7 @@ body.touch.started .tap{display:block}
   $('#pin .cells').addEventListener('click',()=>pinin.focus());
   pinin.addEventListener('input',()=>{pinin.value=pinin.value.replace(/\D/g,'').slice(0,4);draw();if(pinin.value.length===4)tryPin(pinin.value)});
   addEventListener('keydown',e=>{if(pin.classList.contains('open')){if(e.key==='Escape')closePin();e.stopImmediatePropagation()}},true);
-  if(location.hash==='#rider'){setTimeout(()=>{start();setTimeout(()=>{show(11,1);setTimeout(openPin,900)},600)},300)}
+  if(location.hash==='#rider'){setTimeout(()=>{start();setTimeout(()=>{show(11,1);setTimeout(openPin,1000)},1700)},300)}
 
   /* gêneros e card funk: toque dispara a microanimação */
   $$('.gt,.funk').forEach(el=>{const go=()=>{el.classList.add('play');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('play'),1400)};
