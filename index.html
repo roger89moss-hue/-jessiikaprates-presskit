@@ -119,7 +119,7 @@ p{margin:0}
 
 /* ---------- 1 capa ---------- */
 #s1 .col{width:880px;gap:26px;translate:calc(var(--px,0)*10px) calc(var(--py,0)*6px);transition:translate .7s var(--easeOut)}
-#s1 .bgi{translate:calc(var(--px,0)*-16px) calc(var(--py,0)*-9px);transition:transform 12s cubic-bezier(.2,.6,.2,1),translate .7s var(--easeOut)}
+#s1 .bgi{object-position:70% 32%;translate:calc(var(--px,0)*-16px) calc(var(--py,0)*-9px);transition:transform 12s cubic-bezier(.2,.6,.2,1),translate .7s var(--easeOut)}
 #s1 .t{font-size:138px;width:max-content;max-width:100%;padding-right:.08em;line-height:.92}
 #s1 .logo{width:620px;margin-top:-6px;display:block;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
 #s1 .meta{display:flex;align-items:center;gap:14px;margin-top:6px;font-weight:800;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:#d0d6de}
@@ -318,14 +318,14 @@ p b{color:#fff;font-weight:800}
 .P #pin .cells i{width:52px;height:60px}
 /* 14 encerramento */
 #s14 .shade.a{background:radial-gradient(70% 70% at 50% 50%,rgba(7,8,12,.55),rgba(7,8,12,.92))}
-.fin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:0 90px}
-.logo-s{position:relative;width:min(640px,70%);isolation:isolate}
+.fin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:0 90px}
+.logo-s{position:relative;width:min(980px,78%);isolation:isolate;margin:4px 0 10px}
 .logo-s img{width:100%;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.7))}
 .logo-s .sheen{position:absolute;inset:0;-webkit-mask:url(assets/logo_prata.webp) center/contain no-repeat;mask:url(assets/logo_prata.webp) center/contain no-repeat;
   background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.95) 50%,rgba(95,211,255,.5) 54%,transparent 62%);background-size:260% 100%;background-position:120% 0;mix-blend-mode:screen;opacity:.9}
 .on .logo-s .sheen{animation:sheen 3.6s cubic-bezier(.4,0,.2,1) 1.3s infinite}
 @keyframes sheen{0%{background-position:120% 0}55%{background-position:-60% 0}100%{background-position:-60% 0}}
-.P .fin{padding:0 24px;gap:16px}.P .logo-s{width:80%}
+.P .fin{padding:0 24px;gap:12px;position:relative;min-height:100%}.P .logo-s{width:92%}
 /* 13 booking */
 .btn.wa{display:flex;gap:18px;border-radius:20px;padding:20px 24px;max-width:780px;align-self:stretch}
 .btn.wa .cta{margin-left:auto;background:linear-gradient(90deg,var(--blue),var(--ice));color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 10px 24px -10px rgba(61,123,255,.9)}
@@ -354,17 +354,20 @@ body.started #prog{opacity:1}
 .tap{position:fixed;top:0;bottom:0;width:22%;z-index:30;display:none}
 .tap.l{left:0}.tap.r{right:0}
 body.touch.started .tap{display:block}
-#cur{position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;border:1.5px solid rgba(95,211,255,.7);box-shadow:0 0 0 1px rgba(7,8,12,.4);opacity:0;transition:opacity .4s,width .35s var(--easeOut),height .35s var(--easeOut),margin .35s var(--easeOut),border-color .35s}
-#cur:after{content:"";position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:radial-gradient(circle,rgba(95,211,255,.22),transparent 65%);filter:blur(8px)}
-#cur.on{opacity:1}
-#cur.hov{width:44px;height:44px;margin:-22px 0 0 -22px;border-color:rgba(255,255,255,.9)}
 #toast{position:fixed;left:50%;top:calc(20px + env(safe-area-inset-top,0px));transform:translate(-50%,-16px);z-index:70;padding:10px 18px;border-radius:999px;background:#fff;color:#111;font-weight:800;font-size:13px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 
 
 /* ---------- retrato (celular em pé): palco de 480px de largura, cenas roláveis ---------- */
 .P #stage{perspective:none}
-.P .scene{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.P .scene{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;transform:translateX(10%);background:var(--bg)}
+.P .scene.in-back{transform:translateX(-10%)}
+.P .scene.on{transform:none}
+.P .scene.out-fwd{transform:translateX(-10%);filter:brightness(.6)}
+.P .scene.out-back{transform:translateX(10%);filter:brightness(.6)}
+.P .bgi,.P .shade{position:fixed;inset:0;height:100%}
+.P #fill{display:none}
+.P .amb{position:fixed}
 .P .scene::-webkit-scrollbar{display:none}
 .P #stage .col{position:relative;left:auto!important;top:auto;bottom:auto;right:auto!important;width:auto!important;min-height:100%;justify-content:flex-start;gap:18px;
   padding:28px 22px calc(118px + env(safe-area-inset-bottom,0px))}
@@ -376,7 +379,7 @@ body.touch.started .tap{display:block}
 .P .chips{gap:8px}
 .P .chips span{font-size:13.5px;padding:8px 13px}
 /* capa: foto em cima, texto embaixo, sem rolagem */
-.P #s1 .bgi{height:62%;object-position:center top}
+.P #s1 .bgi{height:62%;object-position:center top;translate:none}
 .P #s1 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.15) 0,rgba(7,8,12,0) 25%,rgba(7,8,12,.35) 48%,rgba(7,8,12,.96) 66%,var(--bg) 100%)}
 .P #stage #s1 .col{justify-content:flex-end;gap:18px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 .P #stage #s1 .t{font-size:92px!important;width:auto;padding:0}
@@ -401,7 +404,7 @@ body.touch.started .tap{display:block}
 .P .scene{display:flex;flex-direction:column}
 .P #stage .col{min-height:0;flex:none}
 .P #stage #s1 .col{min-height:100%}
-.P .cut{position:static;height:auto!important;width:auto!important;max-height:340px;max-width:82%;object-fit:contain;object-position:bottom;align-self:center;margin:22px 0 -26px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6));left:auto!important;right:auto!important;bottom:auto!important}
+.P .cut{position:static!important;height:auto!important;width:auto!important;max-height:340px;max-width:82%;object-fit:contain;object-position:bottom;align-self:center;margin:22px 0 -26px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6));left:auto!important;right:auto!important;bottom:auto!important}
 .P .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.3) 0,rgba(7,8,12,.78) 38%,rgba(7,8,12,.9) 100%)}
 .P .h3{line-height:1.02}
 .P p{font-size:15.5px;line-height:1.55}
@@ -424,8 +427,9 @@ body.touch.started .tap{display:block}
 .P .shade.m{background:linear-gradient(0deg,var(--bg) 0,rgba(7,8,12,.6) 40%,transparent 60%);position:absolute;inset:0 0 auto;height:360px}
 .P #s7 .txt{position:relative;left:auto;bottom:auto;width:auto;padding:14px 22px calc(118px + env(safe-area-inset-bottom,0px));gap:14px}
 .P .minis{grid-template-columns:1fr;gap:10px}
-.P #s9 .bgi{object-position:68% top}
-.P .shade.f{background:linear-gradient(180deg,rgba(214,218,224,0) 0,rgba(214,218,224,0) 30%,rgba(214,218,224,.9) 52%,#d6dae0 100%)}
+.P #s9 .bgi{object-position:center top;height:62%}
+.P .shade.f{background:linear-gradient(180deg,rgba(214,218,224,0) 0,rgba(214,218,224,0) 34%,rgba(214,218,224,.92) 56%,#d6dae0 70%,#d6dae0 100%)}
+.P #s9{background:#d6dae0}
 .P .rays{display:none}
 .P #stage #s9 .col{justify-content:flex-end;padding-top:300px}
 .P #s9 .t{white-space:normal!important}
@@ -443,7 +447,8 @@ body.touch.started .tap{display:block}
 .P .btn.wa span span[style*="28px"]{font-size:22px!important}
 .P .links{grid-template-columns:1fr;gap:10px}
 .P .lk.em .v{font-size:14px;letter-spacing:-.01em}
-.P #s13 .bgi{object-position:72% center}
+.P #s13 .bgi{object-position:center top}
+.P #s13 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.1) 0,rgba(7,8,12,.55) 42%,rgba(7,8,12,.95) 68%,var(--bg) 100%)}
 
 @media (prefers-reduced-motion:reduce){
   .rv,.scene,.bgi,.eb:before,.g3,.wipe,.cut,.fr img,.mosaic img{transition:none!important;transform:none!important;clip-path:none!important}
@@ -467,7 +472,7 @@ body.touch.started .tap{display:block}
 
   <!-- 1 CAPA -->
   <section class="scene" id="s1" aria-label="Capa">
-    <picture><source media="(orientation:portrait) and (max-width:900px)" srcset="assets/capa_v.webp"><img class="bgi" src="assets/capa.webp" alt="Jessiika Prates de óculos escuros e jaqueta preta"></picture>
+    <picture><source media="(orientation:portrait) and (max-width:900px)" srcset="assets/capa_v.webp"><img decoding="async" class="bgi" src="assets/capa.webp" alt="Jessiika Prates de óculos escuros e jaqueta preta"></picture>
     <div class="shade l"></div>
     <div class="col">
       <div class="eb rv" style="--d:300">DJ Open Format · Curitiba / PR</div>
@@ -478,8 +483,8 @@ body.touch.started .tap{display:block}
     </div>
   </section>
 
-<section class="scene" id="s2" aria-label="Sobre"><img class="bgi" src="assets/sobre.webp" alt=""><div class="shade l"></div>
-<img class="cut" src="assets/cut_sorriso.webp" alt="Jessiika Prates sorrindo, de óculos escuros e jaqueta prateada" style="right:40px;height:840px">
+<section class="scene" id="s2" aria-label="Sobre"><img decoding="async" class="bgi" src="assets/sobre.webp" alt=""><div class="shade l"></div>
+<img decoding="async" class="cut" src="assets/cut_sorriso.webp" alt="Jessiika Prates sorrindo, de óculos escuros e jaqueta prateada" style="right:40px;height:840px">
 <div class="col" style="width:880px">
 <div class="eb rv" style="--d:100">01 · Sobre</div>
 <h2 class="t rv" style="--d:250;font-size:88px">Energia que<br><i>move a pista</i></h2>
@@ -489,7 +494,7 @@ body.touch.started .tap{display:block}
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>02</span></div></section>
   <!-- 3 DESTAQUES -->
   <section class="scene" id="s3" aria-label="Destaques">
-    <img class="bgi" data-src="assets/sf2.webp" alt="">
+    <img decoding="async" class="bgi" data-src="assets/sf2.webp" alt="">
     <div class="shade a"></div>
     <div class="col">
       <div class="eb rv" style="--d:100">02 · Trajetória</div>
@@ -507,8 +512,8 @@ body.touch.started .tap{display:block}
     <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>03</span></div>
   </section>
 
-<section class="scene" id="s4" aria-label="O som"><img class="bgi" data-src="assets/sf3.webp" alt=""><div class="shade l"></div>
-<img class="cut" data-src="assets/cut_circulo.webp" alt="Jessiika Prates com fone de ouvido diante de um círculo de luz" style="right:70px;height:820px">
+<section class="scene" id="s4" aria-label="O som"><img decoding="async" class="bgi" data-src="assets/sf3.webp" alt=""><div class="shade l"></div>
+<img decoding="async" class="cut" data-src="assets/cut_circulo.webp" alt="Jessiika Prates com fone de ouvido diante de um círculo de luz" style="right:70px;height:820px">
 <div class="col" style="width:1040px;gap:18px">
 <div class="eb rv" style="--d:100">03 · O som</div>
 <h2 class="t rv" style="--d:250;font-size:76px">Um set para cada pista</h2>
@@ -522,14 +527,14 @@ body.touch.started .tap{display:block}
 <p class="rv" style="--d:1700;font-size:17px">O funk é a especialidade, mas o repertório vai muito além: do pop ao rock, do pagode à música eletrônica, Jessiika adapta a seleção ao público e à proposta de cada evento.</p>
 <a class="btn rv" style="--d:1900" href="https://on.soundcloud.com/EgyHt4tksT2OT4zWaC" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4" />   <path d="M9 8l0 9" />   <path d="M6 17l0 -7" />   <path d="M3 16l0 -2" /> </svg></span>Ouvir sets no SoundCloud</a>
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>04</span></div></section>
-<section class="scene" id="s5" aria-label="Por onde passou"><img class="bgi" data-src="assets/sf1.webp" alt=""><div class="shade a"></div>
+<section class="scene" id="s5" aria-label="Por onde passou"><img decoding="async" class="bgi" data-src="assets/sf1.webp" alt=""><div class="shade a"></div>
 <div class="col" style="right:90px;gap:18px">
 <div class="eb rv" style="--d:100">04 · Palcos e trajetória</div>
 <h2 class="t rv" style="--d:250;font-size:88px">Por onde passou</h2>
 <div class="ev2"><a href="https://www.instagram.com/verdantcwb/" target="_blank" rel="noopener" class="sat acc-b g3 ev rv up" style="--d:450;padding:22px 26px"><div class="lbl dk" style="font-size:12px;">Residência · Curitiba</div><div class="h3" style="font-size:34px;margin:8px 0 6px">Verdant</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:var(--ink2)">DJ residente da maior casa LGBTQIAPN+ do Sul do Brasil, onde dividiu palco com Hitmaker.</div><div class="go" style="color:#1f5fff">Ver perfil <span>→</span></div></a><a href="https://www.instagram.com/pratesdj/reel/DaVaoUYP5eV/" target="_blank" rel="noopener" class="sat g3 ev rv up" style="--d:560;padding:22px 26px"><div class="lbl dk" style="font-size:12px;">Curitiba · 2025 e 2026</div><div class="h3" style="font-size:34px;margin:8px 0 6px">Marcha pela Diversidade</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:var(--ink2)">Trio para 50 mil pessoas em 2025 e de volta na 9ª edição, em 2026.</div><div class="go" style="color:#1f5fff">Ver vídeo <span>→</span></div></a></div>
 <div class="ev3"><div class="glass smoke g3 ev rv up" style="--d:670;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">São Paulo</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Rolê do POXA</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Line-up ao lado de MC Danny e Giana Mello.</div></div><a href="https://eventos.maringa.com/11566/i-kissed-a-girl" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:780;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Maringá · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Ultra Club</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Convidada em janeiro e na festa I Kissed a Girl, na pista principal.</div><div class="go" style="color:var(--ice)">Ver line-up <span>→</span></div></a><div class="glass smoke g3 ev rv up" style="--d:890;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Curitiba · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Encontrinho Delas</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">DJ das edições da festa no Marcenaria Bar, com dança no palco.</div></div><a href="https://partiurolecwb.com.br/euphoria-curitiba/" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:1000;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Curitiba · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Euphoria</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Uma das três DJs da festa no Bar do Pedrão.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><div class="glass smoke g3 ev rv up" style="--d:1110;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Paradas</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Parada da Diversidade</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Parada LGBTI+ de Curitiba e de Fazenda Rio Grande.</div></div><a href="https://curitibacult.com.br/ano-novo-em-curitiba-veja-o-que-fazer-na-virada-para-2025/" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:1220;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Réveillon 2024/25</div><div class="h3" style="font-size:26px;margin:8px 0 6px">White Party · Bwayne</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Line-up da virada em Curitiba.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a></div>
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>05</span></div></section>
-<section class="scene" id="s6" aria-label="Line-ups"><img class="bgi" data-src="assets/sf2.webp" alt=""><div class="shade l"></div>
+<section class="scene" id="s6" aria-label="Line-ups"><img decoding="async" class="bgi" data-src="assets/sf2.webp" alt=""><div class="shade l"></div>
 <div class="col" style="width:440px">
 <div class="eb rv" style="--d:100">05 · Line-ups</div>
 <h2 class="t rv" style="--d:250;font-size:78px">Dividindo<br>a pista</h2>
@@ -545,8 +550,8 @@ body.touch.started .tap{display:block}
 <p class="rv" style="--d:700">Veja a Jessiika em ação, dos trios elétricos às pistas dos clubes. Os vídeos das apresentações estão reunidos no Instagram dela.</p>
 <a class="btn rv" style="--d:950" href="https://www.instagram.com/pratesdj/reels/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M7 4v16l13 -8l-13 -8" /> </svg></span>Ver trechos das apresentações</a></div>
 <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>07</span></div></section>
-<section class="scene" id="s8" aria-label="Na mídia"><img class="bgi" data-src="assets/sf3.webp" alt=""><div class="shade l"></div>
-<img class="cut" data-src="assets/cut_branca.webp" alt="Jessiika Prates de camiseta branca" style="right:60px;height:830px">
+<section class="scene" id="s8" aria-label="Na mídia"><img decoding="async" class="bgi" data-src="assets/sf3.webp" alt=""><div class="shade l"></div>
+<img decoding="async" class="cut" data-src="assets/cut_branca.webp" alt="Jessiika Prates de camiseta branca" style="right:60px;height:830px">
 <div class="col" style="width:1020px;gap:18px">
 <div class="eb rv" style="--d:100">07 · Imprensa e divulgação</div>
 <h2 class="t rv" style="--d:250;font-size:96px">Na mídia</h2>
@@ -559,7 +564,7 @@ body.touch.started .tap{display:block}
 <div class="minis"><a class="glass smoke g3 mini rv up" style="--d:1000" href="https://partiurolecwb.com.br/euphoria-curitiba/" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Partiu Rolê CWB · ago/2026</div><div class="h3" style="font-size:20px;margin:6px 0">Euphoria com funk, mega funk e pop</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">“…sets comandados por Jessiika Prates, Luana Dalla e Emke durante toda a programação.”</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><a class="glass smoke g3 mini rv up" style="--d:1160" href="https://eventos.maringa.com/11566/i-kissed-a-girl" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Eventos Maringá · ago/2026</div><div class="h3" style="font-size:20px;margin:6px 0">I Kissed a Girl · Ultra Club</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">Divulgação do line-up da pista principal da festa, em 29 de agosto de 2026.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><a class="glass smoke g3 mini rv up" style="--d:1320" href="https://curitibacult.com.br/ano-novo-em-curitiba-veja-o-que-fazer-na-virada-para-2025/" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Curitiba Cult · dez/2024</div><div class="h3" style="font-size:20px;margin:6px 0">O que fazer na virada para 2025</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">“A line up do evento fica com os DJs Jessiika Prates, Wagner Mauricio…”</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a></div>
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>08</span></div></section>
 <section class="scene light" id="s9" aria-label="Front da Prates">
-<img class="bgi" src="assets/front.webp" alt="Jessiika Prates de costas, com raios de luz prateada saindo dela">
+<picture><source media="(orientation:portrait) and (max-width:900px)" srcset="assets/front_v.webp"><img decoding="async" class="bgi" src="assets/front.webp" alt="Jessiika Prates de costas, com raios de luz prateada saindo dela"></picture>
 <div class="rays" aria-hidden="true"></div>
 <div class="shade f"></div>
 <div class="col" style="width:640px;gap:22px">
@@ -574,7 +579,7 @@ body.touch.started .tap{display:block}
 </div></div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>09</span></div></section>
   <!-- 10 FORMATOS -->
   <section class="scene" id="s10" aria-label="Formatos de show">
-    <img class="bgi" data-src="assets/sf2.webp" alt="" style="transform:scale(1.04) scaleX(-1)">
+    <img decoding="async" class="bgi" data-src="assets/sf2.webp" alt="" style="transform:scale(1.04) scaleX(-1)">
     <div class="shade a"></div>
     <div class="col">
       <div class="eb rv" style="--d:100">09 · Formatos de show</div>
@@ -596,16 +601,16 @@ body.touch.started .tap{display:block}
     <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>10</span></div>
   </section>
 
-<section class="scene" id="s11" aria-label="Efeitos especiais"><img class="bgi" data-src="assets/fx.webp" alt=""><div class="shade n"></div>
+<section class="scene" id="s11" aria-label="Efeitos especiais"><img decoding="async" class="bgi" data-src="assets/fx.webp" alt=""><div class="shade n"></div>
 <div class="col" style="right:90px;gap:14px">
 <div class="eb rv" style="--d:100">10 · Efeitos especiais</div>
 <h2 class="t rv" style="--d:250;font-size:76px">Para os momentos de impacto</h2>
 <p class="rv" style="--d:450;font-size:17px;color:#b8bec8">Adicional opcional, operado pela equipe da Jessiika. Dá para combinar os efeitos e programar cada um para o momento certo da festa. Uso sujeito à autorização do local.</p>
 <div class="fxs"><div class="glass smoke g3 fx rv up" style="--d:500"><div class="fxph"><span class="pulse"></span><img data-src="assets/fx_gerb.webp" alt="Gerb indoor soltando faíscas"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Gerb indoor</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Efeito contínuo</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Uma fonte de faíscas que fica acesa por alguns segundos, como um chafariz de luz.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>Entrada da DJ, abertura da pista e momentos especiais que pedem mais tempo de efeito.</div></div><div class="glass smoke g3 fx rv up" style="--d:700"><div class="fxph"><span class="pulse"></span><img data-src="assets/fx_silverjet.webp" alt="Silver jet disparando"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Silver jet</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Disparo único</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Um jato curto e forte de faíscas, que sobe de uma vez e apaga logo em seguida.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>O ápice da música, a entrada da artista ou dos noivos e as viradas rápidas do show.</div></div><div class="glass smoke g3 fx rv up" style="--d:900"><div class="fxph"><span class="pulse"></span><img data-src="assets/fx_papel.webp" alt="Papel picado no ar"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Papel picado</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Disparo único</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Um disparo de papel picado que se espalha no ar e cai devagar sobre a pista.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>O auge da festa, contagens regressivas, parabéns e a música mais esperada da noite.</div></div></div>
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>11</span></div></section>
-<section class="scene" id="s12" aria-label="Materiais para divulgação"><img class="bgi" data-src="assets/baixe.webp" alt=""><div class="shade l"></div>
+<section class="scene" id="s12" aria-label="Materiais para divulgação"><img decoding="async" class="bgi" data-src="assets/baixe.webp" alt=""><div class="shade l"></div>
 <img class="refl" data-src="assets/cut_sentada.webp" alt="" aria-hidden="true">
-<img class="cut" data-src="assets/cut_sentada.webp" alt="Jessiika Prates sentada, de roupa prateada" style="left:880px;bottom:140px;width:720px">
+<img decoding="async" class="cut" data-src="assets/cut_sentada.webp" alt="Jessiika Prates sentada, de roupa prateada" style="left:880px;bottom:140px;width:720px">
 <div class="col" style="width:860px">
 <div class="eb rv" style="--d:100">11 · Materiais para divulgação</div>
 <h2 class="t rv" style="--d:250;font-size:96px">Baixe e divulgue</h2>
@@ -613,7 +618,7 @@ body.touch.started .tap{display:block}
 <div class="note rv up" style="--d:650"><span style="font-size:22px">✦</span><span>Ao divulgar, escreva <b style="color:#fff">Jessiika Prates</b>, com dois “i”, e marque <b style="color:#fff">@pratesdj</b> no Instagram.</span></div>
 <div class="mats"><a class="glass smoke g3 mb rv up" style="--d:900" href="https://drive.google.com/drive/folders/1iozrwqipnmwVyETTI22x4CjHneUPtb7w" target="_blank" rel="noopener"><span class="mi" style="background:rgba(220,228,236,.14)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M15 8h.01" />   <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" />   <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />   <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /> </svg></span><span><span class="h3" style="font-size:20px">Fotos oficiais</span><span class="md" style="color:#a7adb8">Ensaio 2026 em alta resolução</span></span><span class="ar">↗</span></a><a class="glass smoke g3 mb rv up" style="--d:1000" href="https://drive.google.com/drive/folders/11EzhuhxOPxFtfsMde0oUsAMhtsOLAr0b" target="_blank" rel="noopener"><span class="mi" style="background:rgba(220,228,236,.14)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />   <path d="M8 4l0 16" />   <path d="M16 4l0 16" />   <path d="M4 8l4 0" />   <path d="M4 16l4 0" />   <path d="M4 12l16 0" />   <path d="M16 8l4 0" />   <path d="M16 16l4 0" /> </svg></span><span><span class="h3" style="font-size:20px">Vídeos</span><span class="md" style="color:#a7adb8">Para divulgação e telão</span></span><span class="ar">↗</span></a><a class="glass smoke g3 mb rv up" style="--d:1100" href="https://drive.google.com/drive/folders/1-RPzVFBLjtfejUoyijO8v3Y3fTDO8fBQ" target="_blank" rel="noopener"><span class="mi" style="width:70px;background:rgba(220,228,236,.14)"><img src=assets/logo.webp alt='' style=width:58px></span><span><span class="h3" style="font-size:20px">Logos</span><span class="md" style="color:#a7adb8">PNG sem fundo e vetor</span></span><span class="ar">↗</span></a><button type="button" id="riderbtn" class="sat g3 mb rv up" style="--d:1200;text-align:left" aria-haspopup="dialog"><span class="mi" style="background:var(--ink)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></span><span><span class="h3" style="font-size:20px">Rider técnico</span><span class="md" style="color:var(--ink3)">Acesso com PIN · solicite à Jessiika</span></span><span class="ar" style="color:var(--ink3)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></span></button></div>
 </div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>12</span></div></section>
-<section class="scene" id="s13" aria-label="Booking"><img class="bgi" data-src="assets/book.webp" alt=""><div class="shade l"></div>
+<section class="scene" id="s13" aria-label="Booking"><picture><source media="(orientation:portrait) and (max-width:900px)" srcset="assets/book_v.webp"><img decoding="async" class="bgi" data-src="assets/book.webp" alt=""></picture><div class="shade l"></div>
 <div class="col" style="width:860px;gap:22px">
 <div class="eb rv" style="--d:100">12 · Booking</div>
 <h2 class="t rv" style="--d:250;font-size:112px">Bora fazer<br><i>sua festa?</i></h2>
@@ -624,13 +629,13 @@ body.touch.started .tap{display:block}
 <a class="glass smoke g3 lk rv up" style="--d:1050" href="https://on.soundcloud.com/EgyHt4tksT2OT4zWaC" target="_blank" rel="noopener"><span class="ic" style="background:#ff5500"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4" />   <path d="M9 8l0 9" />   <path d="M6 17l0 -7" />   <path d="M3 16l0 -2" /> </svg></span><span><span class="lbl" style="display:block;font-size:11.5px">SoundCloud · Sets</span><span class="v">Ouvir trabalhos</span></span></a>
 <a class="glass smoke g3 lk em rv up" style="--d:1150" href="mailto:jessiikaprates@gmail.com" target="_blank" rel="noopener"><span class="ic" style="background:#3d7bff"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />   <path d="M3 7l9 6l9 -6" /> </svg></span><span><span class="lbl" style="display:block;font-size:11.5px">E-mail</span><span class="v">jessiikaprates@gmail.com</span></span><button class="copy" type="button" data-copy="jessiikaprates@gmail.com">Copiar</button></a>
 </div></div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>13</span></div></section>
-<section class="scene" id="s14" aria-label="Encerramento"><img class="bgi" data-src="assets/sf1.webp" alt=""><div class="shade a"></div>
+<section class="scene" id="s14" aria-label="Encerramento"><img decoding="async" class="bgi" data-src="assets/sf1.webp" alt=""><div class="shade a"></div>
 <div class="fin">
 <div class="eb rv" style="--d:200;justify-content:center">Obrigada</div>
 <div class="logo-s rv up" style="--d:500"><img data-src="assets/logo_prata.webp" alt="Jessiika Prates"><span class="sheen"></span></div>
-<div class="t rv" style="--d:900;font-size:40px">Nos vemos <i>na pista.</i></div>
-<a class="rv" style="--d:1200;font-weight:800;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:#e4e8ee" href="https://www.instagram.com/pratesdj/" target="_blank" rel="noopener">@pratesdj</a>
-<div class="rv" style="--d:1400;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(220,228,236,.45)">Press Kit 2026 · Curitiba / PR</div>
+<div class="t rv" style="--d:900;font-size:28px">Nos vemos <i>na pista.</i></div>
+<a class="rv" style="--d:1200;font-weight:800;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#e4e8ee" href="https://www.instagram.com/pratesdj/" target="_blank" rel="noopener">@pratesdj</a>
+<div class="rv" style="--d:1400;font-weight:700;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(220,228,236,.45)">Press Kit 2026 · Curitiba / PR</div>
 </div></section>
 
   <div class="vig" aria-hidden="true"></div>
@@ -646,7 +651,6 @@ body.touch.started .tap{display:block}
   <button class="nb" id="next" type="button" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button>
 </nav>
 
-<div id="cur" aria-hidden="true"></div>
 <div id="pin" role="dialog" aria-modal="true" aria-label="Rider técnico: acesso com PIN"><div class="glass smoke box"><button class="x" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"/></svg></button>
 <div class="lock"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></div><h3>Rider técnico</h3><p>Digite o PIN para acessar o rider técnico.</p>
 <div class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i></div><input id="pinin" type="tel" inputmode="numeric" autocomplete="one-time-code" maxlength="4" aria-label="PIN de 4 dígitos">
@@ -665,7 +669,7 @@ body.touch.started .tap{display:block}
   function fit(){const P=innerHeight>innerWidth&&innerWidth<900;body.classList.toggle('P',P);const st=stage.style;
     if(P){const s=innerWidth/480;st.setProperty('--s',s);st.setProperty('--sw','480px');st.setProperty('--sh',Math.round(innerHeight/s)+'px')}
     else{const s=Math.min(innerWidth/1600,innerHeight/900);st.setProperty('--s',s);
-      st.setProperty('--sw',Math.round(Math.min(1900,Math.max(1600,innerWidth/s)))+'px');st.setProperty('--sh',Math.round(Math.min(1040,Math.max(900,innerHeight/s)))+'px')}}
+      st.setProperty('--sw',Math.round(Math.min(2400,Math.max(1600,innerWidth/s)))+'px');st.setProperty('--sh',Math.round(Math.min(1250,Math.max(900,innerHeight/s)))+'px')}}
   addEventListener('resize',fit);fit();
 
   /* contagem dos números */
@@ -712,21 +716,14 @@ body.touch.started .tap{display:block}
   const s1=$('#s1');
   if(!reduce){addEventListener('pointermove',e=>{if(e.pointerType&&e.pointerType!=='mouse')return;const px=(e.clientX/innerWidth-.5)*2,py=(e.clientY/innerHeight-.5)*2;s1.style.setProperty('--px',px.toFixed(3));s1.style.setProperty('--py',py.toFixed(3))},{passive:true});
     if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission!=='function'){addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const px=Math.max(-1,Math.min(1,e.gamma/25)),py=Math.max(-1,Math.min(1,((e.beta||0)-45)/30));s1.style.setProperty('--px',px.toFixed(3));s1.style.setProperty('--py',py.toFixed(3))},{passive:true})}}
-  /* cursor de luz no desktop */
-  const cur=$('#cur');
-  if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce){let cx=innerWidth/2,cy=innerHeight/2,tx=cx,ty=cy,shown=false;
-    addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;tx=e.clientX;ty=e.clientY;if(!shown){shown=true;cx=tx;cy=ty;cur.classList.add('on')}
-      cur.classList.toggle('hov',!!e.target.closest('a,button,.g3,.gt'))},{passive:true});
-    document.addEventListener('mouseleave',()=>cur.classList.remove('on'));document.addEventListener('mouseenter',()=>{if(shown)cur.classList.add('on')});
-    (function loop(){cx+=(tx-cx)*.22;cy+=(ty-cy)*.22;cur.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)';requestAnimationFrame(loop)})()}
   /* pré-carregamento: a cena atual e as vizinhas primeiro, o resto quando o navegador estiver livre */
   function load(sc){sc.querySelectorAll('img[data-src]').forEach(im=>{im.src=im.dataset.src;im.removeAttribute('data-src')})}
-  function preload(k){[k,k+1,k-1].forEach(n=>{if(scenes[n])load(scenes[n])})}
+  function preload(k){[k,k+1,k-1,k+2].forEach(n=>{if(scenes[n])load(scenes[n])})}
   preload(0);
-  (window.requestIdleCallback||(f=>setTimeout(f,1500)))(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,400)})()});
+  setTimeout(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,250)})()},900);
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='Ujcg9JjqvHqf6eFDAkOZ/KexiRe8SJ0udbWGdUrgLHnMxfVjKcloiInhEnA7XVvgptZQO4lLsrfb5AdE/CpHdb2F/9jKfhpc85w1rP1McURPZigqDDgZTykzkJ4IlV0Vj1RyrQcQnxC+QbmFUu1omdRk';
+  const RIDER='xLiDH9VUiOUfVEEX6jUlwP0bWQG4ZV3r2pgibXvJ4Jre7NJtQTkZtGAt3nRuJ9S970wcMjYYx5LYoArQWksKDRr+rhBM8hfQ10LdEaVMGww8DnGVMDD6mdXxDXjmsrFCoqpc3Dkl2lJ0M9gqDj0+fvZ8';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
