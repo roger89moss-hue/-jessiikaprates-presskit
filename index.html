@@ -1,0 +1,728 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Jessiika Prates Press Kit</title>
+
+<meta name="description" content="Press kit interativo 2026 da DJ Jessiika Prates, DJ Open Format de Curitiba.">
+</head><body><style>
+/* Palco 16:9 (1600x900) escalado para a tela. Tema único escuro: palco de show. */
+@font-face{font-family:Mont;font-weight:500;src:url(assets/mont-500.woff2) format("woff2")}
+@font-face{font-family:Mont;font-weight:700;src:url(assets/mont-700.woff2) format("woff2")}
+@font-face{font-family:Mont;font-weight:800;src:url(assets/mont-800.woff2) format("woff2")}
+@font-face{font-family:Mont;font-weight:900;src:url(assets/mont-900.woff2) format("woff2")}
+:root{
+  --bg:#07080c; --bg2:#0e1118; --fg:#eef1f5; --mute:#a7adb8; --ink:#07080c; --ink2:#2b2f37; --ink3:#5b616c;
+  --ice:#5fd3ff; --blue:#3d7bff; --line:rgba(205,225,240,.2);
+  --silver1:#fbfcfd; --silver2:#e2e6ec; --silver3:#c3cad4; --silver4:#a6afbb;
+  --font:Mont,Montserrat,"Segoe UI",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.8,.2,1); --easeOut:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*,*:before,*:after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased;
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px;border-radius:12px}
+p{margin:0}
+
+#vp{position:fixed;inset:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 40%,#0c0f16 0,var(--bg) 70%)}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:50% 50%;overflow:hidden;background:var(--bg);perspective:1600px}
+
+/* ---------- luz ambiente ---------- */
+.amb{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.amb .beam{position:absolute;top:-30%;bottom:-30%;width:220px;transform:skewX(-18deg);filter:blur(28px);opacity:.55;
+  background:linear-gradient(180deg,rgba(95,211,255,.14),rgba(61,123,255,.05) 55%,transparent);animation:beam 26s ease-in-out infinite alternate}
+.amb .beam.b2{width:340px;left:58%;opacity:.4;animation-duration:34s;animation-delay:-12s;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(95,211,255,.04) 60%,transparent)}
+.amb .beam.b3{width:160px;left:84%;opacity:.35;animation-duration:30s;animation-delay:-20s}
+.amb .beam.b1{left:36%}
+@keyframes beam{from{transform:translateX(-60px) skewX(-18deg)}to{transform:translateX(60px) skewX(-18deg)}}
+.amb .glow{position:absolute;border-radius:50%;filter:blur(110px);animation:breathe 14s ease-in-out infinite alternate}
+.amb .glow.gb{width:640px;height:640px;left:-220px;bottom:-300px;background:radial-gradient(circle,rgba(61,123,255,.5),transparent 70%)}
+.amb .glow.gi{width:560px;height:560px;right:-200px;top:-280px;background:radial-gradient(circle,rgba(95,211,255,.28),transparent 70%);animation-delay:-7s}
+@keyframes breathe{from{opacity:.55;transform:scale(1)}to{opacity:.85;transform:scale(1.08)}}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,transparent 60%,rgba(3,4,8,.55) 100%)}
+
+/* ---------- base ---------- */
+.bgi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 12s cubic-bezier(.2,.6,.2,1)}
+.on .bgi{transform:scale(1)}
+.col{position:absolute;left:90px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.eb{font-weight:800;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--ice);display:flex;align-items:center;gap:14px}
+.eb:before{content:"";width:36px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--ice));transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease) .25s}
+.on .eb:before{transform:scaleX(1)}
+.t{font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;margin:0;color:#f4f6f9;text-wrap:balance}
+.t i{font-style:normal;color:var(--ice)}
+.lbl{font-weight:800;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.dk{color:var(--ink3)}
+.foot{position:absolute;left:90px;right:90px;bottom:32px;display:flex;justify-content:space-between;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(220,228,236,.4);pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:9px 16px;border-radius:999px;font-size:15px;font-weight:700;border:1.5px solid rgba(225,232,240,.5);background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.chips span:nth-child(odd){border-color:rgba(95,211,255,.6)}
+
+/* ---------- cenas e coreografia ---------- */
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s var(--ease),visibility 0s linear .9s,transform .9s var(--ease);transform:scale(1.015)}
+.scene.on{opacity:1;visibility:visible;transform:none;transition:opacity .9s var(--ease),visibility 0s,transform 1.2s var(--ease)}
+.scene.out-back{transform:scale(.985)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--d,0)*1ms)}
+.rv.up{transform:translateY(40px) scale(.97)}
+.rv.lf{transform:translateX(-34px)}
+.on .rv{opacity:1;transform:none}
+.scene:not(.on) .rv{transition:none}
+
+/* ---------- vidro 3D ---------- */
+.g3{position:relative;--mx:50%;--my:40%;--rx:0deg;--ry:0deg;--lift:0px;transform-style:preserve-3d;
+  transform:perspective(1400px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(var(--lift));
+  transition:transform .9s var(--easeOut),box-shadow .9s var(--easeOut);will-change:transform}
+.g3.live{transition:transform .12s linear,box-shadow .5s}
+.glass{border-radius:22px;color:var(--fg);isolation:isolate;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.035) 55%,rgba(255,255,255,.06));
+  -webkit-backdrop-filter:blur(18px) saturate(1.35);backdrop-filter:blur(18px) saturate(1.35);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 -1px 0 rgba(255,255,255,.07) inset,0 0 0 1px rgba(255,255,255,.18),
+    0 30px 60px -30px rgba(0,0,0,.85),0 12px 24px -16px rgba(0,0,0,.6)}
+.glass.smoke{background:linear-gradient(135deg,rgba(20,24,32,.55),rgba(10,12,18,.5) 60%,rgba(30,36,48,.45))}
+/* chanfro: anel interno com gradiente, só na borda */
+.glass:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;z-index:1;
+  background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.08) 30%,rgba(255,255,255,.04) 60%,rgba(95,211,255,.45));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+/* reflexo especular que segue o mouse */
+.glass:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;opacity:var(--sp,.55);transition:opacity .6s;
+  background:radial-gradient(420px 260px at var(--mx) var(--my),rgba(255,255,255,.22),rgba(255,255,255,.06) 40%,transparent 70%)}
+.g3:hover{--lift:14px;--sp:.95}
+.glass>*{position:relative;z-index:2}
+/* vidro prateado (cards acetinados do PDF) */
+.sat{border-radius:24px;color:var(--ink);isolation:isolate;--mx:50%;--my:40%;
+  background:linear-gradient(135deg,rgba(255,255,255,.35),rgba(255,255,255,0) 45%),url(assets/silver.jpg) center/1600px 900px,#d9dce1;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.95),inset 0 -3px 6px rgba(55,65,80,.28),0 0 0 1.5px rgba(150,160,174,.9),0 0 0 3px rgba(240,243,247,.55),0 24px 48px -22px rgba(0,0,0,.8)}
+.sat:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;opacity:var(--sp,.5);transition:opacity .6s;
+  background:radial-gradient(520px 300px at var(--mx) var(--my),rgba(255,255,255,.75),rgba(255,255,255,.18) 40%,transparent 72%);mix-blend-mode:soft-light}
+.sat>*{position:relative;z-index:2}
+.acc-b{box-shadow:inset 0 6px 0 var(--blue),inset 0 2px 1px rgba(255,255,255,.95),inset 0 -3px 6px rgba(55,65,80,.28),0 0 0 1.5px rgba(150,160,174,.9),0 0 0 3px rgba(240,243,247,.55),0 24px 48px -22px rgba(0,0,0,.8)}
+/* refração sutil (Chrome/Edge); navegadores sem suporte ignoram esta linha e ficam com o blur acima */
+.glass.refr{-webkit-backdrop-filter:url(#refr) blur(18px) saturate(1.35);backdrop-filter:url(#refr) blur(18px) saturate(1.35)}
+
+/* ---------- botão cromado ---------- */
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 24px;border-radius:16px;font-weight:800;font-size:18px;align-self:flex-start;color:var(--ink);position:relative;isolation:isolate;--mx:50%;
+  background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 46%),linear-gradient(180deg,#fbfcfd 0%,#e2e6ec 20%,#c3cad4 48%,#a6afbb 53%,#d0d6de 78%,#f1f3f6 100%);
+  box-shadow:inset 0 2px 1px #fff,inset 0 -3px 5px rgba(50,60,75,.35),0 0 0 1.5px #8d96a3,0 0 0 3.5px #eef1f5,0 0 0 4.5px #6b7481,0 14px 30px -12px rgba(0,0,0,.85);
+  transition:transform .5s var(--easeOut),box-shadow .5s}
+.btn:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(100deg,transparent 0,rgba(255,255,255,0) calc(var(--mx) - 90px),rgba(255,255,255,.85) var(--mx),rgba(255,255,255,0) calc(var(--mx) + 90px),transparent);opacity:0;transition:opacity .4s;mix-blend-mode:screen}
+.btn:hover{transform:translateY(-2px);box-shadow:inset 0 2px 1px #fff,inset 0 -3px 5px rgba(50,60,75,.35),0 0 0 1.5px #8d96a3,0 0 0 3.5px #eef1f5,0 0 0 4.5px #6b7481,0 22px 40px -14px rgba(0,0,0,.9),0 0 50px -14px rgba(95,211,255,.55)}
+.btn:hover:after{opacity:1}
+.btn:active{transform:translateY(0)}
+.btn .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none;background:var(--ink);color:#fff}
+.btn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 1 capa ---------- */
+#s1 .col{width:880px;gap:26px}
+#s1 .t{font-size:138px;width:max-content;max-width:100%;padding-right:.08em;line-height:.92}
+#s1 .logo{width:620px;margin-top:-6px;display:block;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+#s1 .meta{display:flex;align-items:center;gap:14px;margin-top:6px;font-weight:800;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:#d0d6de}
+#s1 .meta i{width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 14px var(--ice)}
+#s1 .shade.l{background:linear-gradient(90deg,rgba(7,8,12,.92) 0,rgba(7,8,12,.82) 42%,rgba(7,8,12,.25) 68%,rgba(7,8,12,0) 80%)}
+#s1 .wipe{clip-path:inset(-10% 100% -10% -2%);transition:clip-path 1.4s var(--ease) .35s}
+#s1.on .wipe{clip-path:inset(-10% -4% -10% -2%)}
+#s1.on.done .wipe{clip-path:none}
+#go{margin-top:18px;padding:20px 30px;font-size:16px;letter-spacing:.22em;text-transform:uppercase}
+#go small{display:block;font-size:11px;letter-spacing:.18em;color:var(--ink3);margin-top:4px;font-weight:700;text-transform:none;letter-spacing:.06em}
+#go .ic svg{stroke-width:2.4}
+body.started #go{opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .5s,transform .5s}
+
+/* ---------- 3 destaques ---------- */
+#s3 .col{right:90px}
+#s3 .t{font-size:100px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{padding:28px 26px;display:flex;flex-direction:column;gap:12px;min-height:270px}
+.stat .big{font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;font-size:58px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.stat .lab{font-size:17px;font-weight:600;line-height:1.45;color:var(--ink2)}
+.stat .src{margin-top:auto;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+
+/* ---------- 10 formatos ---------- */
+#s10 .col{right:90px;gap:20px}
+#s10 .t{font-size:96px}
+.fmts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:stretch}
+.fm{padding:26px 28px;display:flex;flex-direction:column}
+.fm .h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;font-size:48px;margin:8px 0 10px}
+.fm .d{font-size:16.5px;line-height:1.5;font-weight:600;color:var(--ink2)}
+.glass .d{color:#d0d6de;font-weight:500;margin-bottom:14px}
+.glass .lbl{color:var(--ice)}
+
+
+/* ---------- comuns às cenas novas ---------- */
+.h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:0;display:block}
+.sat .h3,.sat .h3 *{color:var(--ink)}
+.glass .h3{color:#f4f6f9}
+.shade{position:absolute;inset:0;pointer-events:none}
+.shade.l{background:linear-gradient(90deg,rgba(7,8,12,.92) 0,rgba(7,8,12,.82) 42%,rgba(7,8,12,.25) 68%,rgba(7,8,12,0) 80%)}
+.shade.a{background:rgba(7,8,12,.72)}
+.shade.n{background:transparent}
+.cut{position:absolute;bottom:0;filter:drop-shadow(0 20px 50px rgba(0,0,0,.6));opacity:0;transform:translateX(24px);transition:opacity 1.3s var(--ease) .15s,transform 1.6s var(--ease) .15s}
+.on .cut{opacity:1;transform:none}
+.go{margin-top:12px;font-weight:800;font-size:15.5px;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.go span{transition:transform .4s var(--easeOut)}
+a:hover .go span{transform:translateX(5px)}
+.sat,.glass{border-radius:20px}
+p b{color:#fff;font-weight:800}
+
+/* 4 o som */
+.funk{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:22px 26px;border-radius:24px}
+.funk .ico{width:84px;height:84px;border-radius:20px;background:var(--blue);color:#fff;box-shadow:0 10px 30px -8px rgba(61,123,255,.85);display:grid;place-items:center;flex:none}
+.eq{display:flex;align-items:flex-end;gap:6px;height:76px;padding-right:6px}
+.eq i{width:9px;border-radius:3px;background:linear-gradient(0deg,var(--blue),var(--ice));height:var(--h);transform-origin:bottom;transform:scaleY(.3)}
+.on .eq i{animation:eq .9s ease-in-out calc(var(--k)*-0.13s) 5 alternate}
+.funk:hover .eq i,.funk.play .eq i{animation:eq .9s ease-in-out calc(var(--k)*-0.13s) infinite alternate}
+@keyframes eq{0%{transform:scaleY(.25)}50%{transform:scaleY(1)}100%{transform:scaleY(.45)}}
+.gts{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.gt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border-radius:16px;font-weight:700;font-size:13.5px;text-align:center;color:#e6ebf1;cursor:default}
+.gt svg{width:34px;height:34px;color:var(--ice);overflow:visible}
+.gt:nth-child(even) svg{color:#a98bff}
+.gt svg *{transform-box:fill-box}
+.gt:hover .k1,.gt.play .k1{animation:sl1 .8s ease-in-out 2 alternate}
+.gt:hover .k2,.gt.play .k2{animation:sl2 .7s ease-in-out 2 alternate}
+.gt:hover .k3,.gt.play .k3{animation:sl3 .9s ease-in-out 2 alternate}
+@keyframes sl1{to{transform:translateY(-7px)}} @keyframes sl2{to{transform:translateY(8px)}} @keyframes sl3{to{transform:translateY(-6px)}}
+.gt:hover .mic,.gt.play .mic{filter:drop-shadow(0 0 5px currentColor)} .spk{opacity:0;transform:scale(.3);transform-origin:center;transition:opacity .3s,transform .4s var(--ease)}
+.gt:hover .spk,.gt.play .spk{opacity:1;transform:scale(1)}
+.disc{transform-origin:center} .gt:hover .disc,.gt.play .disc{animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.m1{transform-origin:100% 100%} .m2{transform-origin:0 100%}
+.gt:hover .m1,.gt.play .m1{animation:shk .18s ease-in-out 6 alternate} .gt:hover .m2,.gt.play .m2{animation:shk .18s ease-in-out 6 alternate-reverse}
+@keyframes shk{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+.hat{transform-origin:50% 100%} .gt:hover .hat,.gt.play .hat{animation:tip .9s var(--ease) 1}
+@keyframes tip{30%{transform:rotate(-12deg) translateY(-2px)}60%{transform:rotate(6deg)}100%{transform:none}}
+.bel{transform-origin:center} .gt:hover .bel,.gt.play .bel{animation:fole .55s ease-in-out 4 alternate}
+.gt:hover .acl,.gt.play .acl{animation:acl .55s ease-in-out 4 alternate} .gt:hover .acr,.gt.play .acr{animation:acr .55s ease-in-out 4 alternate}
+@keyframes fole{to{transform:scaleX(.6)}} @keyframes acl{to{transform:translateX(2px)}} @keyframes acr{to{transform:translateX(-2px)}}
+.bt{transform-origin:100% 50%} .gt:hover .bt,.gt.play .bt{animation:hit .5s var(--ease) 2}
+@keyframes hit{40%{transform:rotate(-16deg) translateX(-2px)}100%{transform:none}}
+.gt:hover .tri,.gt.play .tri{animation:vib .07s linear 10 alternate .2s}
+@keyframes vib{from{transform:translateX(-.6px)}to{transform:translateX(.6px)}}
+.st1{transform-origin:0 0} .st2{transform-origin:100% 0}
+.gt:hover .st1,.gt.play .st1{animation:s1k .32s ease-in 4 alternate} .gt:hover .st2,.gt.play .st2{animation:s2k .32s ease-in 4 alternate .16s}
+@keyframes s1k{to{transform:rotate(14deg)}} @keyframes s2k{to{transform:rotate(-14deg)}}
+.gt:hover .dbody,.gt.play .dbody{animation:thump .32s ease-out 4}
+@keyframes thump{30%{transform:scaleY(.94)}}
+.pd{transform-origin:center} .gt:hover .pd,.gt.play .pd{animation:swing .5s ease-in-out 3 alternate}
+@keyframes swing{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+.stk{transform-origin:100% 0} .gt:hover .stk,.gt.play .stk{animation:strike .4s ease-in 3}
+@keyframes strike{50%{transform:rotate(-14deg) translate(-1px,1px)}}
+.gt:hover .tb,.gt.play .tb{animation:thump .4s ease-out 3 .2s}
+.gtr{transform-origin:center} .gt:hover .gtr,.gt.play .gtr{animation:riff .06s linear 14 alternate}
+@keyframes riff{from{transform:rotate(-2deg) translate(-.5px,0)}to{transform:rotate(2deg) translate(.5px,0)}}
+.bulb{transition:fill .5s,filter .5s} .gt:hover .bulb,.gt.play .bulb{fill:currentColor;fill-opacity:.35;filter:drop-shadow(0 0 6px currentColor)}
+.ray{opacity:0;transition:opacity .4s} .gt:hover .ray,.gt.play .ray{opacity:1}
+.r1,.r2{transform-origin:center} .gt:hover .r1,.gt.play .r1,.gt:hover .r2,.gt.play .r2{animation:spin 1.2s linear infinite}
+.star{transform-origin:center} .gt:hover .star,.gt.play .star{animation:twk .8s var(--ease) 1;filter:drop-shadow(0 0 5px currentColor)}
+@keyframes twk{40%{transform:scale(1.35) rotate(18deg)}100%{transform:none}}
+
+
+/* 5 por onde passou */
+.ev2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ev3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ev{display:block}
+
+/* 6 line-ups */
+.figs{position:absolute;right:90px;top:0;bottom:0;display:grid;grid-template-columns:repeat(3,270px);gap:20px;align-content:center}
+.fig{margin:0;display:flex;flex-direction:column;gap:10px}
+.fr{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.9);aspect-ratio:9/16;background:#000}
+.fr img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transform:scale(1.06);transition:transform 9s cubic-bezier(.2,.6,.2,1)}
+.on .fr img{transform:scale(1)}
+
+/* 7 ao vivo */
+.mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
+.mosaic .ph{overflow:hidden;background:#000}
+.mosaic .ph:first-child{grid-row:1/3}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.1);transition:transform 14s cubic-bezier(.2,.6,.2,1)}
+.on .mosaic img{transform:scale(1)}
+.on .mosaic .ph:nth-child(2) img,.on .mosaic .ph:nth-child(4) img{transform:scale(1) translateX(2%)}
+.shade.m{background:linear-gradient(0deg,rgba(7,8,12,.96) 10%,rgba(7,8,12,.55) 45%,rgba(7,8,12,0) 70%),linear-gradient(90deg,rgba(7,8,12,.7),transparent 55%)}
+#s7 .txt{position:absolute;left:90px;bottom:90px;width:900px;display:flex;flex-direction:column;gap:18px}
+
+/* 8 na mídia */
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mini{display:block;padding:18px 20px}
+.mini .go{font-size:13px;margin-top:8px}
+
+/* 9 front */
+.light .t{color:#0b0b10}.light .t i{color:#1f5fff}.light .eb{color:#1f5fff}.light p{color:#2b2f37}.light .lbl{color:#5b616c}.light .foot{color:rgba(20,22,28,.45)}
+.light .eb:before{background:linear-gradient(90deg,#1f5fff,#8d96a3)}
+.shade.f{background:linear-gradient(90deg,rgba(214,218,224,.88) 0,rgba(214,218,224,.6) 34%,rgba(214,218,224,0) 52%)}
+.rays{position:absolute;left:50%;top:50%;width:2600px;height:2600px;margin:-1300px 0 0 -1300px;pointer-events:none;mix-blend-mode:screen;opacity:.45;
+  background:conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,0) 0deg,rgba(255,255,255,.55) 6deg,rgba(255,255,255,0) 12deg,rgba(255,255,255,0) 30deg,rgba(255,255,255,.4) 36deg,rgba(255,255,255,0) 42deg,rgba(255,255,255,0) 64deg,rgba(255,255,255,.5) 70deg,rgba(255,255,255,0) 76deg,rgba(255,255,255,0) 100deg,rgba(255,255,255,.4) 106deg,rgba(255,255,255,0) 112deg,rgba(255,255,255,0) 140deg,rgba(255,255,255,.55) 146deg,rgba(255,255,255,0) 152deg,rgba(255,255,255,0) 184deg,rgba(255,255,255,.4) 190deg,rgba(255,255,255,0) 196deg,rgba(255,255,255,0) 226deg,rgba(255,255,255,.5) 232deg,rgba(255,255,255,0) 238deg,rgba(255,255,255,0) 270deg,rgba(255,255,255,.4) 276deg,rgba(255,255,255,0) 282deg,rgba(255,255,255,0) 318deg,rgba(255,255,255,.5) 324deg,rgba(255,255,255,0) 330deg,rgba(255,255,255,0) 360deg);
+  -webkit-mask:radial-gradient(circle,transparent 90px,#000 300px,transparent 900px);mask:radial-gradient(circle,transparent 90px,#000 300px,transparent 900px);
+  transform:translate(290px,-70px) rotate(0deg);animation:rays 160s linear infinite;filter:blur(6px)}
+@keyframes rays{to{transform:translate(290px,-70px) rotate(360deg)}}
+.light .quote{border-left:4px solid #1f5fff;padding-left:22px;font-size:20px;font-weight:700;line-height:1.45;color:#0b0b10}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn .lbl.dk{color:var(--ink3)}
+
+/* 11 efeitos */
+.fxs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.fx{display:flex;flex-direction:column;padding:0 24px 22px;overflow:hidden}
+.fxph{position:relative;height:230px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:14px}
+.fxph img{max-height:215px;position:relative;z-index:1;display:block}
+.fxph .pulse{position:absolute;left:50%;bottom:0;width:260px;height:260px;margin-left:-130px;border-radius:50%;filter:blur(40px);
+  background:radial-gradient(circle,rgba(255,196,120,.45),rgba(95,211,255,.1) 55%,transparent 70%);transform:scale(.8);opacity:.5;animation:pulse 5s ease-in-out infinite alternate}
+.fx:nth-child(3) .fxph .pulse{background:radial-gradient(circle,rgba(220,228,240,.45),rgba(95,211,255,.1) 55%,transparent 70%)}
+.fx:nth-child(2) .fxph .pulse{animation-delay:-1.7s}.fx:nth-child(3) .fxph .pulse{animation-delay:-3.4s}
+@keyframes pulse{to{transform:scale(1.1);opacity:.95}}
+.ideal{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.45;color:#fff}
+
+/* 12 materiais */
+.refl{position:absolute;left:880px;top:760px;width:720px;transform:scaleY(-1);transform-origin:top;opacity:.22;-webkit-mask-image:linear-gradient(0deg,transparent 55%,#000);mask-image:linear-gradient(0deg,transparent 55%,#000)}
+.note{display:flex;align-items:center;gap:14px;padding:14px 20px;border-radius:16px;border:1.5px solid rgba(95,211,255,.65);background:rgba(61,123,255,.14);font-size:17px;line-height:1.45;font-weight:600;max-width:820px}
+.mats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mb{display:flex;align-items:center;gap:16px;border-radius:18px;padding:16px 20px}
+.mb .mi{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;color:#fff;flex:none;transition:transform .5s var(--easeOut)}
+.mb:hover .mi{transform:rotate(-6deg) scale(1.06)}
+.mb .md{display:block;font-size:13.5px;margin-top:3px}
+.mb .ar{margin-left:auto;color:var(--mute);font-size:20px;transition:transform .4s var(--easeOut),color .3s}
+.mb:hover .ar{transform:translate(3px,-3px);color:#fff}
+.sat.mb .ar{color:var(--ink3)}
+
+/* chamada slide 10 */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:16px 16px 16px 24px;border-radius:18px;margin-top:4px}
+.cta .btn{padding:13px 20px;font-size:16px}
+.cta .btn .ic{width:40px;height:40px;border-radius:11px}
+/* PIN do rider */
+#pin{position:fixed;inset:0;z-index:80;display:none;place-items:center;background:rgba(4,5,8,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:24px}
+#pin.open{display:grid}
+#pin .box{width:min(440px,100%);padding:36px 32px 30px;border-radius:26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;transform:scale(var(--s,1))}
+#pin .lock{width:66px;height:66px;border-radius:18px;display:grid;place-items:center;background:var(--blue);color:#fff;box-shadow:0 14px 34px -10px rgba(61,123,255,.9)}
+#pin .lock svg{width:32px;height:32px}
+#pin h3{margin:0;font-weight:900;font-size:30px;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+#pin p{font-size:15px;color:#c4cad3}
+#pin .cells{display:flex;gap:10px;margin:6px 0 2px;cursor:text}
+#pin .cells i{width:58px;height:66px;border-radius:14px;border:1.5px solid rgba(225,232,240,.4);background:rgba(255,255,255,.05);display:grid;place-items:center;font-style:normal;font-weight:900;font-size:30px;transition:border-color .2s,background .2s}
+#pin .cells i.f{border-color:var(--ice);background:rgba(95,211,255,.1)}
+#pin .cells.bad{animation:shake .45s}
+#pin .cells.bad i{border-color:#ff5c7a}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+#pinin{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+#pin .hint{font-size:12.5px;font-weight:700;color:var(--mute);display:flex;align-items:center;gap:8px}
+#pin .hint:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ice)}
+#pin .x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#c4cad3;border:1px solid var(--line)}
+#pin .x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+#pin .ok{display:none;flex-direction:column;align-items:center;gap:12px}
+#pin.done .cells,#pin.done .hint,#pin.done p{display:none}
+#pin.done .ok{display:flex}
+#pin.done .lock{background:#25d366;color:#04120a;box-shadow:0 14px 34px -10px rgba(37,211,102,.8)}
+.P .cta{flex-direction:column;align-items:stretch;padding:16px}
+.P .cta .btn{justify-content:center}
+.P #pin .cells i{width:52px;height:60px}
+/* 13 booking */
+.btn.wa{display:flex;gap:18px;border-radius:20px;padding:20px 24px;max-width:780px;align-self:stretch}
+.btn.wa .cta{margin-left:auto;background:linear-gradient(90deg,var(--blue),var(--ice));color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 10px 24px -10px rgba(61,123,255,.9)}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:780px}
+.lk{display:flex;align-items:center;gap:16px;border-radius:18px;padding:16px 20px;min-width:0}
+.lk .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#fff;flex:none}
+.lk .v{display:block;font-weight:800;font-size:18px;margin-top:3px;overflow-wrap:anywhere}
+.lk.em{grid-column:1/-1}
+.copy{margin-left:auto;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:#fff}
+.copy:hover{border-color:var(--ice)}
+
+/* ---------- navegação ---------- */
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;align-items:center;gap:8px;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));opacity:0;pointer-events:none;transition:opacity .6s}
+body.started #nav{opacity:.9;pointer-events:auto}
+#nav.idle{opacity:.25}
+#nav:hover{opacity:1}
+.nb{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#e9eaf2;background:rgba(14,17,24,.55);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .25s,transform .25s}
+.nb:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+.nb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#cnt{min-width:74px;text-align:center;font-weight:800;font-size:12px;letter-spacing:.2em;color:#fff;font-variant-numeric:tabular-nums}
+#cnt span{color:var(--mute)}
+#prog{position:fixed;left:0;right:0;top:0;height:3px;z-index:40;background:rgba(255,255,255,.05);opacity:0;transition:opacity .6s}
+body.started #prog{opacity:1}
+#prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--ice));transition:width .8s var(--ease)}
+.tap{position:fixed;top:0;bottom:0;width:22%;z-index:30;display:none}
+.tap.l{left:0}.tap.r{right:0}
+body.touch.started .tap{display:block}
+#toast{position:fixed;left:50%;top:calc(20px + env(safe-area-inset-top,0px));transform:translate(-50%,-16px);z-index:70;padding:10px 18px;border-radius:999px;background:#fff;color:#111;font-weight:800;font-size:13px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+
+/* ---------- retrato (celular em pé): palco de 480px de largura, cenas roláveis ---------- */
+.P #stage{width:480px;height:var(--ph,1000px);perspective:none}
+.P .scene{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;transform:none}
+.P .scene::-webkit-scrollbar{display:none}
+.P #stage .col{position:relative;left:auto!important;top:auto;bottom:auto;right:auto!important;width:auto!important;min-height:100%;justify-content:flex-start;gap:18px;
+  padding:28px 22px calc(118px + env(safe-area-inset-bottom,0px))}
+.P .foot,.P .tap{display:none!important}
+.P .amb .beam{width:120px;opacity:.35}
+.P .eb{font-size:12px;letter-spacing:.28em}
+.P .t{font-size:54px!important;line-height:.95}
+.P .lbl{font-size:12px}
+.P .chips{gap:8px}
+.P .chips span{font-size:13.5px;padding:8px 13px}
+/* capa: foto em cima, texto embaixo, sem rolagem */
+.P #s1 .bgi{height:62%;object-position:center top}
+.P #s1 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.15) 0,rgba(7,8,12,0) 25%,rgba(7,8,12,.35) 48%,rgba(7,8,12,.96) 66%,var(--bg) 100%)}
+.P #stage #s1 .col{justify-content:flex-end;gap:18px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.P #stage #s1 .t{font-size:92px!important;width:auto;padding:0}
+.P #s1 .logo{width:300px}
+.P #s1 .meta{font-size:12.5px;letter-spacing:.16em;flex-wrap:wrap;gap:10px}
+.P #go{align-self:stretch;justify-content:center;margin-top:8px;padding:18px 22px;font-size:14px;letter-spacing:.18em;text-align:left}
+.P #go .ic{width:42px;height:42px}
+/* destaques: um card por linha, número e texto lado a lado */
+.P .stats{grid-template-columns:1fr;gap:12px}
+.P .stat{min-height:0;padding:18px 20px;gap:6px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:18px;align-items:center}
+.P .stat .big{font-size:40px;grid-row:1/3;align-self:center;white-space:normal;line-height:.92;min-width:118px}
+.P .stat .lab{font-size:14.5px;line-height:1.4}
+.P .stat .src{margin:0;font-size:10.5px;letter-spacing:.1em}
+/* formatos: cards empilhados */
+.P .fmts{grid-template-columns:1fr;gap:12px}
+.P .fm{padding:20px 22px}
+.P .fm .h3{font-size:36px;margin:6px 0 8px}
+.P .fm .d{font-size:14.5px}
+.P .g3{transform:none!important}
+.P #nav{justify-content:space-between;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.P .nb{width:46px;height:46px}
+
+/* retrato: cenas novas */
+.P .scene{display:flex;flex-direction:column}
+.P #stage .col{min-height:0;flex:none}
+.P #stage #s1 .col{min-height:100%}
+.P .cut{position:static;height:auto!important;width:auto!important;max-height:340px;max-width:82%;object-fit:contain;object-position:bottom;align-self:center;margin:22px 0 -26px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6));left:auto!important;right:auto!important;bottom:auto!important}
+.P .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.3) 0,rgba(7,8,12,.78) 38%,rgba(7,8,12,.9) 100%)}
+.P .h3{line-height:1.02}
+.P p{font-size:15.5px;line-height:1.55}
+.P .funk{grid-template-columns:auto 1fr;gap:16px;padding:18px}
+.P .funk .ico{width:60px;height:60px;border-radius:16px}.P .funk .ico svg{width:32px;height:32px}
+.P .funk .h3{font-size:46px!important}
+.P .funk .eq{grid-column:1/-1;height:40px;justify-content:center;padding:0}
+.P .gts{grid-template-columns:repeat(4,1fr);gap:8px}
+.P .gt{font-size:11.5px;padding:10px 4px;gap:6px}.P .gt svg{width:28px;height:28px}
+.P .btn{align-self:stretch;justify-content:center;font-size:15px;padding:14px 18px}
+.P .ev2,.P .ev3{grid-template-columns:1fr;gap:10px}
+.P .ev{padding:16px 18px!important}
+.P .ev .h3{font-size:24px!important}
+.P .figs{position:relative;right:auto;top:auto;bottom:auto;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 22px 110px;align-content:start}
+.P .fig .h3{font-size:14px}.P .fig div:last-child{font-size:12px}.P .fig .lbl{font-size:10px}
+.P #s6 .col{flex:none;min-height:0;padding-bottom:18px}
+.P .mosaic{position:relative;inset:auto;height:360px;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;flex:none;gap:4px}
+.P .mosaic .ph:first-child{grid-row:auto;grid-column:1/3}
+.P .mosaic .ph:nth-child(n+4){display:none}
+.P .shade.m{background:linear-gradient(0deg,var(--bg) 0,rgba(7,8,12,.6) 40%,transparent 60%);position:absolute;inset:0 0 auto;height:360px}
+.P #s7 .txt{position:relative;left:auto;bottom:auto;width:auto;padding:14px 22px calc(118px + env(safe-area-inset-bottom,0px));gap:14px}
+.P .minis{grid-template-columns:1fr;gap:10px}
+.P #s9 .bgi{object-position:68% top}
+.P .shade.f{background:linear-gradient(180deg,rgba(214,218,224,0) 0,rgba(214,218,224,0) 30%,rgba(214,218,224,.9) 52%,#d6dae0 100%)}
+.P .rays{display:none}
+.P #stage #s9 .col{justify-content:flex-end;padding-top:300px}
+.P #s9 .t{white-space:normal!important}
+.P .light .quote{font-size:16px}
+.P .btns{flex-direction:column;gap:10px}
+.P .fxs{grid-template-columns:1fr;gap:12px}
+.P .fxph{height:170px;margin-bottom:8px}.P .fxph img{max-height:160px}
+.P .fx .h3{font-size:28px!important}
+.P .refl{display:none}
+.P .note{font-size:14px;padding:12px 16px;gap:10px}
+.P .mats{grid-template-columns:1fr;gap:10px}
+.P .mb{padding:14px 16px}
+.P .btn.wa{flex-wrap:wrap;gap:12px;padding:16px 18px}
+.P .btn.wa .cta{margin-left:0;flex:1;text-align:center}
+.P .btn.wa span span[style*="28px"]{font-size:22px!important}
+.P .links{grid-template-columns:1fr;gap:10px}
+.P .lk.em .v{font-size:14px;letter-spacing:-.01em}
+.P #s13 .bgi{object-position:72% center}
+
+@media (prefers-reduced-motion:reduce){
+  .rv,.scene,.bgi,.eb:before,.g3,.wipe,.cut,.fr img,.mosaic img{transition:none!important;transform:none!important;clip-path:none!important}
+  .rv,.cut{opacity:1}.amb .beam,.amb .glow,.rays,.pulse,.eq i,.gt *{animation:none!important}.eq i{transform:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="refr" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div id="prog" aria-hidden="true"><i></i></div>
+
+<main id="vp">
+<div id="stage">
+  <div class="amb" aria-hidden="true"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="glow gb"></span><span class="glow gi"></span></div>
+
+  <!-- 1 CAPA -->
+  <section class="scene" id="s1" aria-label="Capa">
+    <picture><source media="(orientation:portrait) and (max-width:900px)" srcset="assets/capa_v.webp"><img class="bgi" src="assets/capa.webp" alt="Jessiika Prates de óculos escuros e jaqueta preta"></picture>
+    <div class="shade l"></div>
+    <div class="col">
+      <div class="eb rv" style="--d:300">DJ Open Format · Curitiba / PR</div>
+      <h1 class="t wipe">Press <i>kit</i></h1>
+      <img class="logo rv up" style="--d:900" src="assets/logo.webp" alt="Jessiika Prates">
+      <div class="meta rv" style="--d:1300"><span>Residente Verdant</span><i></i><span>Press Kit 2026</span></div>
+      <button id="go" class="btn rv" style="--d:1700" type="button"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 4v16l13 -8z"/></svg></span><span>Iniciar apresentação<small>Tela cheia · avance no seu ritmo</small></span></button>
+    </div>
+  </section>
+
+<section class="scene" id="s2" aria-label="Sobre"><img class="bgi" src="assets/sobre.webp" alt=""><div class="shade l"></div>
+<img class="cut" src="assets/cut_sorriso.webp" alt="Jessiika Prates sorrindo, de óculos escuros e jaqueta prateada" style="right:40px;height:840px">
+<div class="col" style="width:880px">
+<div class="eb rv" style="--d:100">01 · Sobre</div>
+<h2 class="t rv" style="--d:250;font-size:88px">Energia que<br><i>move a pista</i></h2>
+<p class="rv" style="--d:550">Jessiika Prates é DJ Open Format. Nasceu em Paraíso do Norte (PR), mora em São José dos Pinhais e começou a tocar em outubro de 2022. Em pouco tempo virou residente da <b>Verdant</b>, maior casa noturna LGBTQIAPN+ do Sul do Brasil, em Curitiba.</p>
+<p class="rv" style="--d:800">Carismática e muito conectada com o público, ela sente o clima da festa e escolhe cada música para manter todo mundo dançando. Já tocou para 50 mil pessoas na Marcha pela Diversidade de Curitiba e hoje estuda produção musical para criar faixas próprias.</p>
+<div class="sat g3 rv up" style="--d:1150;padding:22px 26px;max-width:800px"><div class="lbl dk" style="margin-bottom:8px">O que é DJ Open Format?</div><div style="font-size:18px;line-height:1.55;font-weight:600">É a DJ que não se prende a um único estilo musical. Na mesma noite, ela mistura funk, pop, eletrônica, flashbacks e os sucessos do momento, de acordo com o público e com a proposta de cada evento.</div></div>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>02</span></div></section>
+  <!-- 3 DESTAQUES -->
+  <section class="scene" id="s3" aria-label="Destaques">
+    <img class="bgi" src="assets/sf2.webp" alt="">
+    <div class="shade a"></div>
+    <div class="col">
+      <div class="eb rv" style="--d:100">02 · Trajetória</div>
+      <h2 class="t rv" style="--d:250">Destaques</h2>
+      <div class="stats">
+        <div class="sat acc-b g3 stat rv up" style="--d:500"><div class="big"><span class="count" data-to="14.3" data-dec="1">14,3</span> mil</div><div class="lab">seguidores no Instagram, perfil verificado</div><div class="src">@pratesdj · out/2026</div></div>
+        <div class="sat g3 stat rv up" style="--d:680"><div class="big"><span class="count" data-to="50" data-dec="0">50</span> mil</div><div class="lab">pessoas na Marcha pela Diversidade de Curitiba 2025, tocando no trio</div><div class="src">Fonte: matéria @ai_que_close</div></div>
+        <div class="sat acc-b g3 stat rv up" style="--d:860"><div class="big">Verdant</div><div class="lab">DJ residente da maior casa noturna LGBTQIAPN+ do Sul do Brasil</div><div class="src">Curitiba / PR · @verdantcwb</div></div>
+        <div class="sat g3 stat rv up" style="--d:1040"><div class="big">PR + SP</div><div class="lab">cenas onde já tocou: Curitiba e região, Maringá e São Paulo</div><div class="src">Verdant · Ultra Club · Rolê do POXA</div></div>
+      </div>
+      <div class="chips">
+        <span class="rv lf" style="--d:1400">Dividiu palco com Hitmaker</span><span class="rv lf" style="--d:1520">Line-up com MC Danny e Giana Mello</span><span class="rv lf" style="--d:1640">2 edições da Marcha pela Diversidade (2025 e 2026)</span><span class="rv lf" style="--d:1760">Shows com dançarinos e efeitos especiais</span>
+      </div>
+    </div>
+    <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>03</span></div>
+  </section>
+
+<section class="scene" id="s4" aria-label="O som"><img class="bgi" src="assets/sf3.webp" alt=""><div class="shade l"></div>
+<img class="cut" src="assets/cut_circulo.webp" alt="Jessiika Prates com fone de ouvido diante de um círculo de luz" style="right:70px;height:820px">
+<div class="col" style="width:1040px;gap:18px">
+<div class="eb rv" style="--d:100">03 · O som</div>
+<h2 class="t rv" style="--d:250;font-size:76px">Um set para cada pista</h2>
+<div class="sat g3 funk rv up" style="--d:500" tabindex="0">
+<div class="ico"><svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -14" />   <path d="M9 14a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />   <path d="M12 7l0 .01" /> </svg></div>
+<div><div class="lbl" style="color:#1f5fff">Especialidade</div><div class="h3" style="font-size:66px">Funk</div>
+<div style="font-size:17px;font-weight:600;line-height:1.45;color:var(--ink2)">O coração dos sets da Jessiika: os hits do funk que fazem a pista descer até o chão, do funk pop ao rave funk.</div></div>
+<div class="eq" aria-hidden="true"><i style="--h:44px;--k:0"></i><i style="--h:70px;--k:1"></i><i style="--h:56px;--k:2"></i><i style="--h:76px;--k:3"></i><i style="--h:38px;--k:4"></i><i style="--h:62px;--k:5"></i></div></div>
+<div class="lbl rv" style="--d:800;color:var(--ice)">Também toca</div>
+<div class="gts"><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Eletrônica" style="--d:900"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v18M12 3v18M19 3v18" opacity=".55"/><path class="k1" d="M3 15h4"/><path class="k2" d="M10 8h4"/><path class="k3" d="M17 13h4"/></svg><span>Eletrônica</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Pop" style="--d:960"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="mic"><path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"/><path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2-2.072-.356-2.775-3.369-1.5-4.5"/><circle cx="16" cy="7" r="5"/></g><g class="spk"><path d="M22 1.5v3M20.5 3h3"/></g></svg><span>Pop</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Hip hop" style="--d:1020"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="disc"><circle cx="11" cy="13" r="8.5"/><circle cx="11" cy="13" r="2.3"/><path d="M6.2 10.2a5.6 5.6 0 0 1 3.2-2.6"/></g><path d="M20.5 3.5v8l-3.6 3.2"/><circle cx="20.5" cy="3" r=".9"/></svg><span>Hip hop</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Reggaeton" style="--d:1080"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="m1"><ellipse cx="8" cy="7.5" rx="3.6" ry="4.6" transform="rotate(-28 8 7.5)"/><path d="M10 11.5 14.5 21"/></g><g class="m2"><ellipse cx="16" cy="7.5" rx="3.6" ry="4.6" transform="rotate(28 16 7.5)"/><path d="M14 11.5 9.5 21"/></g></svg><span>Reggaeton</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Sertanejo" style="--d:1140"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="hat"><path d="M2 13.5c1.6 2.4 5.2 3.5 10 3.5s8.4-1.1 10-3.5"/><path d="M6.6 14.6 7.6 7.4c.3-1.7 1.7-2.2 3.1-1.3l1.3.8 1.3-.8c1.4-.9 2.8-.4 3.1 1.3l1 7.2"/><path d="M7.1 11.4c3.2.9 6.6.9 9.8 0"/></g></svg><span>Sertanejo</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Vanerão" style="--d:1200"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="acl"><rect x="2" y="6" width="5" height="12" rx="1"/></g><g class="acr"><rect x="17" y="6" width="5" height="12" rx="1"/><circle cx="19.5" cy="9.5" r=".6" fill="currentColor"/><circle cx="19.5" cy="12" r=".6" fill="currentColor"/><circle cx="19.5" cy="14.5" r=".6" fill="currentColor"/></g><g class="bel"><path d="M7 7l2.5-1.2L12 7l2.5-1.2L17 7"/><path d="M7 17l2.5 1.2L12 17l2.5 1.2L17 17"/><path d="M9.5 5.8v12.4M12 7v10M14.5 5.8v12.4"/></g></svg><span>Vanerão</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Forró" style="--d:1260"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="tri"><path d="M17.5 19H4.2L11.5 5.5l6.3 11.4"/><path d="M11.5 5.5V2.5"/></g><path class="bt" d="M14.5 12.5 21.5 9"/></svg><span>Forró</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Axé" style="--d:1320"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="st1" d="m2 2 8 8"/><path class="st2" d="m22 2-8 8"/><g class="dbody"><ellipse cx="12" cy="9" rx="10" ry="5"/><path d="M7 13.4v7.9"/><path d="M12 14v8"/><path d="M17 13.4v7.9"/><path d="M2 9v8a10 5 0 0 0 20 0V9"/></g></svg><span>Axé</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Pagode" style="--d:1380"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="pd"><ellipse cx="12" cy="9.5" rx="9.5" ry="4.5"/><path d="M2.5 9.5v4a9.5 4.5 0 0 0 19 0v-4"/><rect x="5" y="13.2" width="2.4" height="2" rx=".5"/><rect x="10.8" y="14.3" width="2.4" height="2" rx=".5"/><rect x="16.6" y="13.2" width="2.4" height="2" rx=".5"/></g></svg><span>Pagode</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Samba" style="--d:1440"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="tb"><circle cx="10" cy="14" r="7"/><circle cx="10" cy="14" r="5"/></g><path class="stk" d="M21.5 3 11 12.5"/></svg><span>Samba</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Rock" style="--d:1500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="gtr"><path d="m11.9 12.1 4.514-4.514"/><path d="M20.1 2.3a1 1 0 0 0-1.4 0l-1.114 1.114A2 2 0 0 0 17 4.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 17.828 7h1.344a2 2 0 0 0 1.414-.586L21.7 5.3a1 1 0 0 0 0-1.4z"/><path d="m6 16 2 2"/><path d="M8.2 9.9C8.7 8.8 9.8 8 11 8c2.8 0 5 2.2 5 5 0 1.2-.8 2.3-1.9 2.8l-.9.4A2 2 0 0 0 12 18a4 4 0 0 1-4 4c-3.3 0-6-2.7-6-6a4 4 0 0 1 4-4 2 2 0 0 0 1.8-1.2z"/></g></svg><span>Rock</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="K-pop" style="--d:1560"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle class="bulb" cx="12" cy="8" r="5"/><path d="M10.2 9.3 12 11l1.8-1.7a1.1 1.1 0 0 0-1.8-1.3 1.1 1.1 0 0 0-1.8 1.3z"/><path d="M12 13v8.5"/><path d="M10 15.5h4"/><path class="ray" d="M3.5 3.5 5 5M20.5 3.5 19 5M2.5 9h1.5M20 9h1.5"/></svg><span>K-pop</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Flashbacks" style="--d:1620"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><g class="r1"><circle cx="8" cy="11" r="2.2"/><path d="M8 8.8v1.4"/></g><g class="r2"><circle cx="16" cy="11" r="2.2"/><path d="M16 8.8v1.4"/></g><path d="M10.2 11h3.6"/><path d="M6 19l1-3h10l1 3"/></svg><span>Flashbacks</span></div><div class="gt glass g3 rv up" tabindex="0" role="button" aria-label="Hits do momento" style="--d:1680"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M9 17v-13h10v6"/><path d="M9 8h10"/><path class="star" d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138"/></svg><span>Hits do momento</span></div></div>
+<p class="rv" style="--d:1700;font-size:17px">O funk é a especialidade, mas o repertório vai muito além: do pop ao rock, do pagode à música eletrônica, Jessiika adapta a seleção ao público e à proposta de cada evento.</p>
+<a class="btn rv" style="--d:1900" href="https://on.soundcloud.com/EgyHt4tksT2OT4zWaC" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4" />   <path d="M9 8l0 9" />   <path d="M6 17l0 -7" />   <path d="M3 16l0 -2" /> </svg></span>Ouvir sets no SoundCloud</a>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>04</span></div></section>
+<section class="scene" id="s5" aria-label="Por onde passou"><img class="bgi" src="assets/sf1.webp" alt=""><div class="shade a"></div>
+<div class="col" style="right:90px;gap:18px">
+<div class="eb rv" style="--d:100">04 · Palcos e trajetória</div>
+<h2 class="t rv" style="--d:250;font-size:88px">Por onde passou</h2>
+<div class="ev2"><a href="https://www.instagram.com/verdantcwb/" target="_blank" rel="noopener" class="sat acc-b g3 ev rv up" style="--d:450;padding:22px 26px"><div class="lbl dk" style="font-size:12px;">Residência · Curitiba</div><div class="h3" style="font-size:34px;margin:8px 0 6px">Verdant</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:var(--ink2)">DJ residente da maior casa LGBTQIAPN+ do Sul do Brasil, onde dividiu palco com Hitmaker.</div><div class="go" style="color:#1f5fff">Ver perfil <span>→</span></div></a><a href="https://www.instagram.com/pratesdj/reel/DaVaoUYP5eV/" target="_blank" rel="noopener" class="sat g3 ev rv up" style="--d:560;padding:22px 26px"><div class="lbl dk" style="font-size:12px;">Curitiba · 2025 e 2026</div><div class="h3" style="font-size:34px;margin:8px 0 6px">Marcha pela Diversidade</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:var(--ink2)">Trio para 50 mil pessoas em 2025 e de volta na 9ª edição, em 2026.</div><div class="go" style="color:#1f5fff">Ver vídeo <span>→</span></div></a></div>
+<div class="ev3"><div class="glass smoke g3 ev rv up" style="--d:670;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">São Paulo</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Rolê do POXA</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Line-up ao lado de MC Danny e Giana Mello.</div></div><a href="https://eventos.maringa.com/11566/i-kissed-a-girl" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:780;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Maringá · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Ultra Club</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Convidada em janeiro e na festa I Kissed a Girl, na pista principal.</div><div class="go" style="color:var(--ice)">Ver line-up <span>→</span></div></a><div class="glass smoke g3 ev rv up" style="--d:890;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Curitiba · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Encontrinho Delas</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">DJ das edições da festa no Marcenaria Bar, com dança no palco.</div></div><a href="https://partiurolecwb.com.br/euphoria-curitiba/" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:1000;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Curitiba · 2026</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Euphoria</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Uma das três DJs da festa no Bar do Pedrão.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><div class="glass smoke g3 ev rv up" style="--d:1110;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Paradas</div><div class="h3" style="font-size:26px;margin:8px 0 6px">Parada da Diversidade</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Parada LGBTI+ de Curitiba e de Fazenda Rio Grande.</div></div><a href="https://curitibacult.com.br/ano-novo-em-curitiba-veja-o-que-fazer-na-virada-para-2025/" target="_blank" rel="noopener" class="glass smoke g3 ev rv up" style="--d:1220;padding:18px 22px"><div class="lbl" style="font-size:12px;color:var(--ice)">Réveillon 2024/25</div><div class="h3" style="font-size:26px;margin:8px 0 6px">White Party · Bwayne</div><div style="font-size:15.5px;line-height:1.45;font-weight:500;color:#cdd3dc">Line-up da virada em Curitiba.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a></div>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>05</span></div></section>
+<section class="scene" id="s6" aria-label="Line-ups"><img class="bgi" src="assets/sf2.webp" alt=""><div class="shade l"></div>
+<div class="col" style="width:440px">
+<div class="eb rv" style="--d:100">05 · Line-ups</div>
+<h2 class="t rv" style="--d:250;font-size:78px">Dividindo<br>a pista</h2>
+<p class="rv" style="--d:500">Jessiika já esteve no mesmo line-up de nomes conhecidos da cena, em Curitiba e em São Paulo.</p></div>
+<div class="figs"><figure class="fig rv up" style="--d:600"><div class="g3 fr"><img src="assets/flyer_hitmaker.webp" alt="Flyer da festa Hyperclub na Verdant"></div><div class="lbl" style="font-size:12px;color:var(--ice)">Verdant · out/2025</div><div class="h3" style="font-size:21px">Hyperclub com Hitmaker</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Pista Sky com Hitmaker, Duda Mehl e Fredo Silva.</div></figure><figure class="fig rv up" style="--d:820"><div class="g3 fr"><img src="assets/foto_hitmaker.webp" alt="Jessiika Prates ao lado de Hitmaker"></div><div class="lbl" style="font-size:12px;color:var(--ice)">Bastidores</div><div class="h3" style="font-size:21px">Com Hitmaker</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Nos bastidores com o artista, com quem dividiu line-up.</div></figure><figure class="fig rv up" style="--d:1040"><div class="g3 fr"><img src="assets/flyer_poxa.webp" alt="Flyer dos 4 anos do Rolê do POXA"></div><div class="lbl" style="font-size:12px;color:var(--ice)">São Paulo · fev/2025</div><div class="h3" style="font-size:21px">4 anos do Rolê do POXA</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Line-up com MC Danny e Giana Mello.</div></figure></div>
+<div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>06</span></div></section>
+<section class="scene" id="s7" aria-label="Ao vivo">
+<div class="mosaic"><div class="ph"><img src="assets/trio.webp" alt="Jessiika Prates tocando no trio elétrico da Marcha pela Diversidade" style="object-position:42% center"></div><div class="ph"><img src="assets/ultra_danca.webp" alt="Jessiika dançando na cabine do Ultra Club" style="object-position:center 25%"></div><div class="ph"><img src="assets/tunel.webp" alt="Jessiika no túnel de luzes" style="object-position:center 30%"></div><div class="ph"><img src="assets/ultra_festa.webp" alt="Pista cheia no Ultra Club" style="object-position:center 20%"></div><div class="ph"><img src="assets/danca.webp" alt="Jessiika dançando no palco" style="object-position:center 25%"></div></div>
+<div class="shade m"></div>
+<div class="txt">
+<div class="eb rv" style="--d:300">06 · Ao vivo</div>
+<h2 class="t rv" style="--d:450;font-size:110px">Do trio ao clube</h2>
+<p class="rv" style="--d:700">Veja a Jessiika em ação, dos trios elétricos às pistas dos clubes. Os vídeos das apresentações estão reunidos no Instagram dela.</p>
+<a class="btn rv" style="--d:950" href="https://www.instagram.com/pratesdj/reels/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M7 4v16l13 -8l-13 -8" /> </svg></span>Ver trechos das apresentações</a></div>
+<div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>07</span></div></section>
+<section class="scene" id="s8" aria-label="Na mídia"><img class="bgi" src="assets/sf3.webp" alt=""><div class="shade l"></div>
+<img class="cut" src="assets/cut_branca.webp" alt="Jessiika Prates de camiseta branca" style="right:60px;height:830px">
+<div class="col" style="width:1020px;gap:18px">
+<div class="eb rv" style="--d:100">07 · Imprensa e divulgação</div>
+<h2 class="t rv" style="--d:250;font-size:96px">Na mídia</h2>
+<a class="sat g3 rv up" style="--d:500;display:block;padding:26px 30px" href="https://www.instagram.com/p/DPWo4brjkjr/" target="_blank" rel="noopener">
+<div class="lbl dk">Ai Que Close · out/2025</div>
+<div class="h3" style="font-size:34px;margin:10px 0">“Jessiika Prates: a energia que move a cena LGBTQIA+ nacional”</div>
+<div style="font-size:17px;line-height:1.5;font-style:italic;font-weight:500;color:var(--ink2)">“Mais do que uma DJ, ela se firmou como um símbolo de resistência, celebração e representatividade: uma artista que não apenas toca música, mas inspira e transforma através dela.”</div>
+<div class="go" style="color:#1f5fff">Ver matéria <span>→</span></div></a>
+<div class="lbl rv" style="--d:850">Também citada em</div>
+<div class="minis"><a class="glass smoke g3 mini rv up" style="--d:1000" href="https://partiurolecwb.com.br/euphoria-curitiba/" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Partiu Rolê CWB · ago/2026</div><div class="h3" style="font-size:20px;margin:6px 0">Euphoria com funk, mega funk e pop</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">“…sets comandados por Jessiika Prates, Luana Dalla e Emke durante toda a programação.”</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><a class="glass smoke g3 mini rv up" style="--d:1160" href="https://eventos.maringa.com/11566/i-kissed-a-girl" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Eventos Maringá · ago/2026</div><div class="h3" style="font-size:20px;margin:6px 0">I Kissed a Girl · Ultra Club</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">Divulgação do line-up da pista principal da festa, em 29 de agosto de 2026.</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a><a class="glass smoke g3 mini rv up" style="--d:1320" href="https://curitibacult.com.br/ano-novo-em-curitiba-veja-o-que-fazer-na-virada-para-2025/" target="_blank" rel="noopener"><div class="lbl" style="font-size:11.5px;color:var(--ice)">Curitiba Cult · dez/2024</div><div class="h3" style="font-size:20px;margin:6px 0">O que fazer na virada para 2025</div><div style="font-size:14.5px;font-style:italic;line-height:1.45;color:#cdd3dc">“A line up do evento fica com os DJs Jessiika Prates, Wagner Mauricio…”</div><div class="go" style="color:var(--ice)">Ver matéria <span>→</span></div></a></div>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>08</span></div></section>
+<section class="scene light" id="s9" aria-label="Front da Prates">
+<img class="bgi" src="assets/front.webp" alt="Jessiika Prates de costas, com raios de luz prateada saindo dela">
+<div class="rays" aria-hidden="true"></div>
+<div class="shade f"></div>
+<div class="col" style="width:640px;gap:22px">
+<div class="eb rv" style="--d:100">08 · Comunidade</div>
+<h2 class="t rv" style="--d:250;font-size:104px;white-space:nowrap">Front da<br><i>Prates</i></h2>
+<p class="rv" style="--d:500">Quem acompanha a Jessiika já conhece a Front da Prates: a galera que marca presença nas apresentações, acompanha o trabalho pelas redes e faz questão de estar pertinho do palco.</p>
+<div class="quote rv" style="--d:750">“Sempre levo comigo esse carinho e positividade que recebo de vocês, que faz tanta diferença.”</div>
+<div class="lbl rv" style="--d:950;margin-top:6px">Faça parte</div>
+<div class="btns">
+<a class="btn rv up" style="--d:1050" href="https://chat.whatsapp.com/B94mPTgDot0683XbbjB806" target="_blank" rel="noopener"><span class="ic" style="background:#25d366;color:#04120a"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />   <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /> </svg></span><span><span class="lbl dk" style="display:block;font-size:11px">Grupo no WhatsApp</span>VIP da Prates</span></a>
+<a class="btn rv up" style="--d:1200" href="https://www.instagram.com/channel/19WBjtJB8YmsOUYE/" target="_blank" rel="noopener"><span class="ic" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />   <path d="M8.5 12a3.5 3.5 0 1 0 7 0a3.5 3.5 0 0 0 -7 0" />   <path d="M17 7v.01" /> </svg></span><span><span class="lbl dk" style="display:block;font-size:11px">Canal no Instagram</span>Front da Prates</span></a>
+</div></div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>09</span></div></section>
+  <!-- 10 FORMATOS -->
+  <section class="scene" id="s10" aria-label="Formatos de show">
+    <img class="bgi" src="assets/sf2.webp" alt="" style="transform:scale(1.04) scaleX(-1)">
+    <div class="shade a"></div>
+    <div class="col">
+      <div class="eb rv" style="--d:100">09 · Formatos de show</div>
+      <h2 class="t rv" style="--d:250">Do jeito da sua festa</h2>
+      <div class="fmts">
+        <div class="sat g3 fm rv up" style="--d:500"><div class="lbl dk">Base</div><div class="h3" style="color:var(--ink)">DJ Set</div>
+          <div class="d">Set open format com repertório sob medida, alinhado com o contratante antes do evento: perfil do público, músicas obrigatórias e repertório sem letras explícitas, quando solicitado.</div></div>
+        <div class="glass refr g3 fm rv up" style="--d:680"><div class="lbl">Adicional</div><div class="h3">+ Dancers</div>
+          <div class="d">Coreografias e performances com dançarinos e dançarinas no palco, para qualquer tipo de evento.</div>
+          <div class="chips"><span>Dupla feminina</span><span>Dupla masculina</span><span>Dupla mista</span><span>Outras sob consulta</span></div></div>
+        <div class="glass smoke refr g3 fm rv up" style="--d:860"><div class="lbl">Adicional</div><div class="h3">+ Efeitos</div>
+          <div class="d">Efeitos especiais levados pela equipe da Jessiika para os momentos de maior impacto. Veja na próxima página.</div>
+          <div class="chips"><span>Gerb indoor</span><span>Silver jet</span><span>Papel picado</span></div></div>
+      </div>
+      <div class="lbl rv" style="--d:1150;margin-top:6px">Eventos que atende</div>
+      <div class="chips"><span class="rv lf" style="--d:1250">Casamentos</span><span class="rv lf" style="--d:1330">Aniversários</span><span class="rv lf" style="--d:1410">Formaturas</span><span class="rv lf" style="--d:1490">Confraternizações</span><span class="rv lf" style="--d:1570">Eventos corporativos</span><span class="rv lf" style="--d:1650">Festivais</span><span class="rv lf" style="--d:1730">Clubes e festas</span><span class="rv lf" style="--d:1810">Paradas e eventos de rua</span></div>
+      <div class="glass smoke g3 cta rv up" style="--d:1500"><div><div class="h3" style="font-size:22px">Gostou? Vamos montar o show ideal para o seu evento?</div><div style="font-size:15px;color:#c4cad3;margin-top:4px">Consulte datas, formatos e disponibilidade.</div></div><a class="btn" href="https://wa.me/5541996721574?text=Ol%C3%A1%2C%20Jessiika!%20Vi%20o%20seu%20press%20kit%20e%20quero%20consultar%20datas%2C%20formatos%20e%20disponibilidade%20para%20um%20evento." target="_blank" rel="noopener"><span class="ic" style="background:#25d366;color:#04120a"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />   <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /> </svg></span>Consultar disponibilidade</a></div>
+    </div>
+    <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>10</span></div>
+  </section>
+
+<section class="scene" id="s11" aria-label="Efeitos especiais"><img class="bgi" src="assets/fx.webp" alt=""><div class="shade n"></div>
+<div class="col" style="right:90px;gap:14px">
+<div class="eb rv" style="--d:100">10 · Efeitos especiais</div>
+<h2 class="t rv" style="--d:250;font-size:76px">Para os momentos de impacto</h2>
+<p class="rv" style="--d:450;font-size:17px;color:#b8bec8">Adicional opcional, operado pela equipe da Jessiika. Dá para combinar os efeitos e programar cada um para o momento certo da festa. Uso sujeito à autorização do local.</p>
+<div class="fxs"><div class="glass smoke g3 fx rv up" style="--d:500"><div class="fxph"><span class="pulse"></span><img src="assets/fx_gerb.webp" alt="Gerb indoor soltando faíscas"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Gerb indoor</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Efeito contínuo</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Uma fonte de faíscas que fica acesa por alguns segundos, como um chafariz de luz.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>Entrada da DJ, abertura da pista e momentos especiais que pedem mais tempo de efeito.</div></div><div class="glass smoke g3 fx rv up" style="--d:700"><div class="fxph"><span class="pulse"></span><img src="assets/fx_silverjet.webp" alt="Silver jet disparando"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Silver jet</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Disparo único</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Um jato curto e forte de faíscas, que sobe de uma vez e apaga logo em seguida.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>O ápice da música, a entrada da artista ou dos noivos e as viradas rápidas do show.</div></div><div class="glass smoke g3 fx rv up" style="--d:900"><div class="fxph"><span class="pulse"></span><img src="assets/fx_papel.webp" alt="Papel picado no ar"></div><div class="h3" style="font-size:34px;margin:10px 0 4px">Papel picado</div><div style="font-weight:800;font-size:17px;color:var(--ice);margin-bottom:8px">Disparo único</div><div style="font-size:15px;line-height:1.5;color:#d0d6de">Um disparo de papel picado que se espalha no ar e cai devagar sobre a pista.</div><div class="ideal"><span class="lbl" style="display:block;font-size:11px;color:var(--ice);margin-bottom:3px">Ideal para</span>O auge da festa, contagens regressivas, parabéns e a música mais esperada da noite.</div></div></div>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>11</span></div></section>
+<section class="scene" id="s12" aria-label="Materiais para divulgação"><img class="bgi" src="assets/baixe.webp" alt=""><div class="shade l"></div>
+<img class="refl" src="assets/cut_sentada.webp" alt="" aria-hidden="true">
+<img class="cut" src="assets/cut_sentada.webp" alt="Jessiika Prates sentada, de roupa prateada" style="left:880px;bottom:140px;width:720px">
+<div class="col" style="width:860px">
+<div class="eb rv" style="--d:100">11 · Materiais para divulgação</div>
+<h2 class="t rv" style="--d:250;font-size:96px">Baixe e divulgue</h2>
+<p class="rv" style="--d:450">Tudo o que a produção do evento precisa para divulgar a apresentação, em alta resolução e pronto para usar.</p>
+<div class="note rv up" style="--d:650"><span style="font-size:22px">✦</span><span>Ao divulgar, escreva <b style="color:#fff">Jessiika Prates</b>, com dois “i”, e marque <b style="color:#fff">@pratesdj</b> no Instagram.</span></div>
+<div class="mats"><a class="glass smoke g3 mb rv up" style="--d:900" href="https://drive.google.com/drive/folders/1iozrwqipnmwVyETTI22x4CjHneUPtb7w" target="_blank" rel="noopener"><span class="mi" style="background:rgba(220,228,236,.14)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M15 8h.01" />   <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" />   <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />   <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /> </svg></span><span><span class="h3" style="font-size:20px">Fotos oficiais</span><span class="md" style="color:#a7adb8">Ensaio 2026 em alta resolução</span></span><span class="ar">↗</span></a><a class="glass smoke g3 mb rv up" style="--d:1000" href="https://drive.google.com/drive/folders/11EzhuhxOPxFtfsMde0oUsAMhtsOLAr0b" target="_blank" rel="noopener"><span class="mi" style="background:rgba(220,228,236,.14)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />   <path d="M8 4l0 16" />   <path d="M16 4l0 16" />   <path d="M4 8l4 0" />   <path d="M4 16l4 0" />   <path d="M4 12l16 0" />   <path d="M16 8l4 0" />   <path d="M16 16l4 0" /> </svg></span><span><span class="h3" style="font-size:20px">Vídeos</span><span class="md" style="color:#a7adb8">Para divulgação e telão</span></span><span class="ar">↗</span></a><a class="glass smoke g3 mb rv up" style="--d:1100" href="https://drive.google.com/drive/folders/1-RPzVFBLjtfejUoyijO8v3Y3fTDO8fBQ" target="_blank" rel="noopener"><span class="mi" style="width:70px;background:rgba(220,228,236,.14)"><img src=assets/logo.webp alt='' style=width:58px></span><span><span class="h3" style="font-size:20px">Logos</span><span class="md" style="color:#a7adb8">PNG sem fundo e vetor</span></span><span class="ar">↗</span></a><button type="button" id="riderbtn" class="sat g3 mb rv up" style="--d:1200;text-align:left" aria-haspopup="dialog"><span class="mi" style="background:var(--ink)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></span><span><span class="h3" style="font-size:20px">Rider técnico</span><span class="md" style="color:var(--ink3)">Acesso com PIN · solicite à Jessiika</span></span><span class="ar" style="color:var(--ink3)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></span></button></div>
+</div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>12</span></div></section>
+<section class="scene" id="s13" aria-label="Booking"><img class="bgi" src="assets/book.webp" alt=""><div class="shade l"></div>
+<div class="col" style="width:860px;gap:22px">
+<div class="eb rv" style="--d:100">12 · Booking</div>
+<h2 class="t rv" style="--d:250;font-size:112px">Bora fazer<br><i>sua festa?</i></h2>
+<p class="rv" style="--d:500">Fale direto com a Jessiika para datas, valores e formatos de show.</p>
+<a class="btn wa rv up" style="--d:700" href="https://wa.me/5541996721574?text=Ol%C3%A1%2C%20entrando%20em%20contato%20para%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener"><span class="ic" style="background:#25d366;color:#04120a;width:60px;height:60px;border-radius:16px"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />   <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /> </svg></span><span><span class="lbl dk" style="display:block;font-size:12px">Contratações e informações</span><span style="display:block;font-weight:900;font-size:30px;letter-spacing:-.01em">(41) 99672-1574</span><span style="display:block;font-size:13px;font-weight:700;color:var(--ink3);margin-top:2px">WhatsApp comercial · toque para abrir a conversa</span></span><span class="cta">Falar agora</span></a>
+<div class="links">
+<a class="glass smoke g3 lk rv up" style="--d:950" href="https://www.instagram.com/pratesdj/" target="_blank" rel="noopener"><span class="ic" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />   <path d="M8.5 12a3.5 3.5 0 1 0 7 0a3.5 3.5 0 0 0 -7 0" />   <path d="M17 7v.01" /> </svg></span><span><span class="lbl" style="display:block;font-size:11.5px">Instagram</span><span class="v">@pratesdj</span></span></a>
+<a class="glass smoke g3 lk rv up" style="--d:1050" href="https://on.soundcloud.com/EgyHt4tksT2OT4zWaC" target="_blank" rel="noopener"><span class="ic" style="background:#ff5500"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4" />   <path d="M9 8l0 9" />   <path d="M6 17l0 -7" />   <path d="M3 16l0 -2" /> </svg></span><span><span class="lbl" style="display:block;font-size:11.5px">SoundCloud · Sets</span><span class="v">Ouvir trabalhos</span></span></a>
+<a class="glass smoke g3 lk em rv up" style="--d:1150" href="mailto:jessiikaprates@gmail.com" target="_blank" rel="noopener"><span class="ic" style="background:#3d7bff"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />   <path d="M3 7l9 6l9 -6" /> </svg></span><span><span class="lbl" style="display:block;font-size:11.5px">E-mail</span><span class="v">jessiikaprates@gmail.com</span></span><button class="copy" type="button" data-copy="jessiikaprates@gmail.com">Copiar</button></a>
+</div></div><div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>13</span></div></section>
+
+  <div class="vig" aria-hidden="true"></div>
+</div>
+</main>
+
+<button class="tap l" type="button" aria-label="Anterior"></button>
+<button class="tap r" type="button" aria-label="Próximo"></button>
+
+<nav id="nav" aria-label="Navegação">
+  <button class="nb" id="prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button>
+  <div id="cnt" aria-live="polite">01 <span>/ 13</span></div>
+  <button class="nb" id="next" type="button" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button>
+  <button class="nb" id="fs" type="button" aria-label="Tela cheia" style="margin-left:8px"><svg viewBox="0 0 24 24"><path d="M4 8v-2a2 2 0 0 1 2 -2h2M4 16v2a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v2M16 20h2a2 2 0 0 0 2 -2v-2"/></svg></button>
+</nav>
+
+<div id="pin" role="dialog" aria-modal="true" aria-label="Rider técnico: acesso com PIN"><div class="glass smoke box"><button class="x" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"/></svg></button>
+<div class="lock"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />   <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />   <path d="M8 11v-4a4 4 0 1 1 8 0v4" /> </svg></div><h3>Rider técnico</h3><p>Digite o PIN para acessar o rider técnico.</p>
+<div class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i></div><input id="pinin" type="tel" inputmode="numeric" autocomplete="one-time-code" maxlength="4" aria-label="PIN de 4 dígitos">
+<div class="hint">Acesso restrito · solicite o PIN à Jessiika</div>
+<div class="ok"><p style="display:block;color:#fff;font-weight:700">PIN correto. O rider está liberado.</p><a id="riderlink" class="btn" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">      <path d="M14 3v4a1 1 0 0 0 1 1h4" />   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />   <path d="M9 9l1 0" />   <path d="M9 13l6 0" />   <path d="M9 17l6 0" /> </svg></span>Abrir rider técnico</a></div></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+  const stage=$('#stage'),scenes=$$('.scene'),body=document.body;
+  const N=scenes.length;let i=0,busy=false,started=false;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* palco escalado */
+  function fit(){const P=innerHeight>innerWidth&&innerWidth<900;body.classList.toggle('P',P);
+    if(P){const s=innerWidth/480;stage.style.setProperty('--s',s);stage.style.setProperty('--ph',Math.round(innerHeight/s)+'px')}
+    else{stage.style.setProperty('--s',Math.min(innerWidth/1600,innerHeight/900));stage.style.removeProperty('--ph')}}
+  addEventListener('resize',fit);fit();
+
+  /* contagem dos números */
+  function count(sc){sc.querySelectorAll('.count').forEach(el=>{const to=+el.dataset.to,dec=+el.dataset.dec;const t0=performance.now(),dur=1400,delay=700;
+    function fmt(v){return v.toFixed(dec).replace('.',',')}
+    if(reduce){el.textContent=fmt(to);return}
+    el.textContent=fmt(0);
+    (function step(now){const p=Math.min(1,Math.max(0,(now-t0-delay)/dur));const e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(step)})(t0)})}
+
+  /* troca de cena */
+  function show(k,dir){k=(k+N)%N;if(busy||k===i&&started)return;busy=true;
+    const cur=scenes[i],nx=scenes[k];
+    cur.classList.remove('on');cur.classList.toggle('out-back',dir<0);
+    nx.classList.remove('out-back');void nx.offsetWidth;nx.classList.add('on');
+    i=k;nx.scrollTop=0;count(nx);
+    $('#cnt').innerHTML=String(i+1).padStart(2,'0')+' <span>/ '+String(N).padStart(2,'0')+'</span>';
+    $('#prog i').style.width=((i+1)/N*100)+'%';
+    setTimeout(()=>busy=false,reduce?50:950)}
+  scenes[0].classList.add('on');setTimeout(()=>scenes[0].classList.add('done'),reduce?0:2000);
+
+  /* início */
+  function start(){if(started)return;started=true;body.classList.add('started');
+    const el=document.documentElement;const req=el.requestFullscreen||el.webkitRequestFullscreen;
+    if(req){try{const p=req.call(el);if(p&&p.catch)p.catch(()=>{})}catch(e){}}
+    setTimeout(()=>show(1,1),500)}
+  $('#go').addEventListener('click',start);
+  $('#next').addEventListener('click',()=>show(i+1,1));
+  $('#prev').addEventListener('click',()=>show(i-1,-1));
+  $('.tap.r').addEventListener('click',()=>show(i+1,1));
+  $('.tap.l').addEventListener('click',()=>show(i-1,-1));
+  $('#fs').addEventListener('click',()=>{const el=document.documentElement;
+    if(document.fullscreenElement){document.exitFullscreen()}else{const req=el.requestFullscreen||el.webkitRequestFullscreen;if(req){try{const p=req.call(el);if(p&&p.catch)p.catch(()=>toast('Tela cheia não disponível aqui'))}catch(e){toast('Tela cheia não disponível aqui')}}}});
+  addEventListener('keydown',e=>{if(e.target.closest('a,button')&&(e.key===' '||e.key==='Enter'))return;
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();started?show(i+1,1):start()}
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1,-1)}
+    else if(e.key==='Home'){show(0,-1)}else if(e.key==='End'){show(N-1,1)}});
+  /* swipe */
+  let sx=0,sy=0,st=0;
+  addEventListener('touchstart',e=>{body.classList.add('touch');const t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now()},{passive:true});
+  addEventListener('touchend',e=>{if(e.target.closest('a,button'))return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(Date.now()-st<700&&Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3){if(!started){start();return}show(dx<0?i+1:i-1,dx<0?1:-1)}},{passive:true});
+  /* navegação some quando parado */
+  let idle;function wake(){$('#nav').classList.remove('idle');clearTimeout(idle);idle=setTimeout(()=>$('#nav').classList.add('idle'),3200)}
+  ['mousemove','touchstart','keydown'].forEach(ev=>addEventListener(ev,wake,{passive:true}));wake();
+  function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800)}
+
+
+  /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
+  const RIDER='0+oAafeML0nAS9s54of17fvybCVeFTO25DPzcG0F5BMcKzEBit8SVJDmI6eq21mh5IYxRY+1CnhL5aEpsR06vmL3DcF8Jd9RXbHFm8hS+OoTpZmFBqs7cArhFVowk8p8h2XrAUJhNofkRLweR6dxfH8K';
+  const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
+  function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
+  function closePin(){pin.classList.remove('open')}
+  function draw(){const v=pinin.value;cells.forEach((c,k)=>{c.textContent=v[k]?'•':'';c.classList.toggle('f',k===v.length)})}
+  async function tryPin(v){if(pinBusy)return;pinBusy=true;
+    try{const enc=new TextEncoder();const raw=Uint8Array.from(atob(RIDER),c=>c.charCodeAt(0));const salt=raw.slice(0,16),iv=raw.slice(16,28),ct=raw.slice(28);
+      const km=await crypto.subtle.importKey('raw',enc.encode('prates-'+v),'PBKDF2',false,['deriveKey']);
+      const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:120000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+      const url=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct));
+      $('#riderlink').href=url;pin.classList.add('done');$('#riderlink').focus()}
+    catch(e){const c=$('#pin .cells');c.classList.add('bad');setTimeout(()=>{c.classList.remove('bad');pinin.value='';draw();pinin.focus()},480)}
+    pinBusy=false}
+  $('#riderbtn').addEventListener('click',openPin);
+  $('#pin .x').addEventListener('click',closePin);
+  pin.addEventListener('click',e=>{if(e.target===pin)closePin()});
+  $('#pin .cells').addEventListener('click',()=>pinin.focus());
+  pinin.addEventListener('input',()=>{pinin.value=pinin.value.replace(/\D/g,'').slice(0,4);draw();if(pinin.value.length===4)tryPin(pinin.value)});
+  addEventListener('keydown',e=>{if(pin.classList.contains('open')){if(e.key==='Escape')closePin();e.stopImmediatePropagation()}},true);
+  if(location.hash==='#rider'){setTimeout(()=>{start();setTimeout(()=>{show(11,1);setTimeout(openPin,900)},600)},300)}
+
+  /* gêneros e card funk: toque dispara a microanimação */
+  $$('.gt,.funk').forEach(el=>{const go=()=>{el.classList.add('play');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('play'),1400)};
+    el.addEventListener('touchstart',go,{passive:true});el.addEventListener('click',go);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+  /* copiar e-mail */
+  $$('.copy').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const v=b.dataset.copy;
+    const ok=()=>toast('E-mail copiado');const fail=()=>{const r=document.createRange();r.selectNodeContents(b.parentElement.querySelector('.v'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Selecione e copie o e-mail')};
+    try{navigator.clipboard.writeText(v).then(ok,fail)}catch(err){fail()}}));
+  /* o ambiente só anima na cena visível */
+  /* vidro 3D: inclinação e reflexo seguem o mouse */
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  $$('.g3,.btn').forEach(el=>{let raf=0,ev=null;
+    function apply(){raf=0;const r=el.getBoundingClientRect();const px=(ev.clientX-r.left)/r.width,py=(ev.clientY-r.top)/r.height;
+      el.style.setProperty('--mx',(px*100).toFixed(1)+'%');el.style.setProperty('--my',(py*100).toFixed(1)+'%');
+      if(el.classList.contains('g3')&&fine&&!reduce){el.style.setProperty('--ry',((px-.5)*7).toFixed(2)+'deg');el.style.setProperty('--rx',((.5-py)*6).toFixed(2)+'deg')}}
+    el.addEventListener('pointerenter',()=>{el.classList.add('live')});
+    el.addEventListener('pointermove',e=>{ev=e;if(!raf)raf=requestAnimationFrame(apply)});
+    el.addEventListener('pointerleave',()=>{el.classList.remove('live');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');el.style.setProperty('--mx','50%');el.style.setProperty('--my','40%')});
+    /* toque: um pulso de luz */
+    el.addEventListener('touchstart',()=>{el.style.setProperty('--sp','.95');el.style.setProperty('--lift','10px');setTimeout(()=>{el.style.removeProperty('--sp');el.style.removeProperty('--lift')},500)},{passive:true});
+  });
+})();
+</script>
+</body></html>
