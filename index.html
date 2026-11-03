@@ -378,7 +378,7 @@ body.touch.started .tap{display:block}
 /* capa: foto em cima, texto embaixo, sem rolagem */
 .P #s1 .bgi{height:62%;object-position:center top;translate:none}
 .P #s1 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.15) 0,rgba(7,8,12,0) 25%,rgba(7,8,12,.35) 48%,rgba(7,8,12,.96) 66%,var(--bg) 100%)}
-.P #stage #s1 .col{justify-content:flex-end;gap:18px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.P #stage #s1 .col{justify-content:flex-end;gap:18px;padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
 .P #stage #s1 .t{font-size:92px!important;width:auto;padding:0}
 .P #s1 .logo{width:300px}
 .P #s1 .meta{font-size:12.5px;letter-spacing:.16em;flex-wrap:wrap;gap:10px}
@@ -733,7 +733,7 @@ body.touch.started .tap{display:block}
   setTimeout(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,250)})()},900);
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='fkU0hkpu0TZZC7QFkPMKjbcPBnsZrF0GjeGhk8cWEgz8of4DbDXXAi7A9j6/PWVdC5hwa3detDCcxxorfdkYA+Er6K2tiTMdrhLkiH3srAagYApaBXJuQ39vCu2sS/4I5I0rPR0THy9++w4Mkt/QGZAW';
+  const RIDER='QhmCk0KnT+Oj6MmMmu4d4sc8SUPkMTmF6SnCUIF7rLIgSr+5Ls6wO8tGsUO3SrIH9PJZ5yhWuaBjCPUn1XRk05eG6lJOFJUlgSI9Nqcyl67lNBvjefb5U0eQp/BErBmeISRm5I/IHY8TtQEojAtPK7e6';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
