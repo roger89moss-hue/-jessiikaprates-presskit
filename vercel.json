@@ -1,0 +1,24 @@
+{
+ "redirects": [
+  {
+   "source": "/fotos",
+   "destination": "https://drive.google.com/drive/folders/1iozrwqipnmwVyETTI22x4CjHneUPtb7w",
+   "permanent": false
+  },
+  {
+   "source": "/videos",
+   "destination": "https://drive.google.com/drive/folders/11EzhuhxOPxFtfsMde0oUsAMhtsOLAr0b",
+   "permanent": false
+  },
+  {
+   "source": "/logos",
+   "destination": "https://drive.google.com/drive/folders/1-RPzVFBLjtfejUoyijO8v3Y3fTDO8fBQ",
+   "permanent": false
+  },
+  {
+   "source": "/rider",
+   "destination": "https://drive.google.com/file/d/17q9FMHsovo07PHkFRC0i9JcqHKDPtzIh/view",
+   "permanent": false
+  }
+ ]
+}
