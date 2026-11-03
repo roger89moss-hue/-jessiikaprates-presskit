@@ -237,9 +237,9 @@ p b{color:#fff;font-weight:800}
 .mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
 .mosaic .ph{overflow:hidden;background:#000}
 .mosaic .ph:first-child{grid-row:1/3}
-.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.1);transition:transform 14s cubic-bezier(.2,.6,.2,1)}
-.on .mosaic img{transform:scale(1)}
-.on .mosaic .ph:nth-child(2) img,.on .mosaic .ph:nth-child(4) img{transform:scale(1) translateX(2%)}
+.mosaic .ph{position:relative}.mosaic img,.mosaic video{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.1);transition:transform 14s cubic-bezier(.2,.6,.2,1)}.mosaic video{position:absolute;inset:0;opacity:0;transition:opacity .8s ease,transform 14s cubic-bezier(.2,.6,.2,1)}.mosaic video.ok{opacity:1}
+.on .mosaic img,.on .mosaic video{transform:scale(1)}
+.on .mosaic .ph:nth-child(2) img,.on .mosaic .ph:nth-child(4) img,.on .mosaic .ph:nth-child(2) video,.on .mosaic .ph:nth-child(4) video{transform:scale(1) translateX(2%)}
 .shade.m{background:linear-gradient(0deg,rgba(7,8,12,.96) 10%,rgba(7,8,12,.55) 45%,rgba(7,8,12,0) 70%),linear-gradient(90deg,rgba(7,8,12,.7),transparent 55%)}
 #s7 .txt{position:absolute;left:90px;bottom:90px;width:900px;display:flex;flex-direction:column;gap:18px}
 
@@ -546,7 +546,7 @@ body.touch.started .tap{display:block}
 <p class="rv" style="--d:500">Jessiika já esteve no mesmo line-up de nomes conhecidos da cena, em Curitiba e em São Paulo.</p></div>
 <div class="figs"><figure class="fig rv up" style="--d:600"><div class="g3 fr"><img data-src="assets/flyer_hitmaker.webp" alt="Flyer da festa Hyperclub na Verdant"></div><div class="lbl" style="font-size:12px;color:var(--ice)">Verdant · out/2025</div><div class="h3" style="font-size:21px">Hyperclub com Hitmaker</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Pista Sky com Hitmaker, Duda Mehl e Fredo Silva.</div></figure><figure class="fig rv up" style="--d:820"><div class="g3 fr"><img data-src="assets/foto_hitmaker.webp" alt="Jessiika Prates ao lado de Hitmaker"></div><div class="lbl" style="font-size:12px;color:var(--ice)">Bastidores</div><div class="h3" style="font-size:21px">Com Hitmaker</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Nos bastidores com o artista, com quem dividiu line-up.</div></figure><figure class="fig rv up" style="--d:1040"><div class="g3 fr"><img data-src="assets/flyer_poxa.webp" alt="Flyer dos 4 anos do Rolê do POXA"></div><div class="lbl" style="font-size:12px;color:var(--ice)">São Paulo · fev/2025</div><div class="h3" style="font-size:21px">4 anos do Rolê do POXA</div><div style="font-size:14.5px;line-height:1.4;color:#cdd3dc">Line-up com MC Danny e Giana Mello.</div></figure></div>
 <div class="foot"><span>Jessiika Prates · Press Kit 2026</span><span>06</span></div></div></section>
-<section class="scene" id="s7" aria-label="Ao vivo"><div class="mosaic"><div class="ph"><img data-src="assets/trio.webp" alt="Jessiika Prates tocando no trio elétrico da Marcha pela Diversidade" style="object-position:42% center"></div><div class="ph"><img data-src="assets/ultra_danca.webp" alt="Jessiika dançando na cabine do Ultra Club" style="object-position:center 25%"></div><div class="ph"><img data-src="assets/tunel.webp" alt="Jessiika no túnel de luzes" style="object-position:center 30%"></div><div class="ph"><img data-src="assets/ultra_festa.webp" alt="Pista cheia no Ultra Club" style="object-position:center 20%"></div><div class="ph"><img data-src="assets/danca.webp" alt="Jessiika dançando no palco" style="object-position:center 25%"></div></div>
+<section class="scene" id="s7" aria-label="Ao vivo"><div class="mosaic"><div class="ph"><img data-src="assets/live_trio.webp" alt="Jessiika Prates tocando no trio elétrico da Marcha pela Diversidade" style="object-position:center 30%"><video class="vid" muted loop playsinline disablepictureinpicture preload="none" data-vsrc="assets/live_trio.mp4" style="object-position:center 30%" aria-hidden="true" tabindex="-1"></video></div><div class="ph"><img data-src="assets/live_red.webp" alt="Jessiika na cabine, com fones, sob luz vermelha" style="object-position:center 12%"><video class="vid" muted loop playsinline disablepictureinpicture preload="none" data-vsrc="assets/live_red.mp4" style="object-position:center 12%" aria-hidden="true" tabindex="-1"></video></div><div class="ph"><img data-src="assets/live_white.webp" alt="Jessiika sorrindo na cabine da White Party" style="object-position:center 22%"><video class="vid" muted loop playsinline disablepictureinpicture preload="none" data-vsrc="assets/live_white.mp4" style="object-position:center 22%" aria-hidden="true" tabindex="-1"></video></div><div class="ph"><img data-src="assets/live_crowd.webp" alt="Público lotando a rua na Marcha pela Diversidade" style="object-position:center 55%"><video class="vid" muted loop playsinline disablepictureinpicture preload="none" data-vsrc="assets/live_crowd.mp4" style="object-position:center 55%" aria-hidden="true" tabindex="-1"></video></div><div class="ph"><img data-src="assets/live_vitto.webp" alt="Jessiika tocando no Vitto, com neon ao fundo" style="object-position:center 40%"><video class="vid" muted loop playsinline disablepictureinpicture preload="none" data-vsrc="assets/live_vitto.mp4" style="object-position:center 40%" aria-hidden="true" tabindex="-1"></video></div></div>
 <div class="shade m"></div>
 <div class="frame">
 <div class="txt">
@@ -733,7 +733,7 @@ body.touch.started .tap{display:block}
   setTimeout(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,250)})()},900);
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='QhmCk0KnT+Oj6MmMmu4d4sc8SUPkMTmF6SnCUIF7rLIgSr+5Ls6wO8tGsUO3SrIH9PJZ5yhWuaBjCPUn1XRk05eG6lJOFJUlgSI9Nqcyl67lNBvjefb5U0eQp/BErBmeISRm5I/IHY8TtQEojAtPK7e6';
+  const RIDER='i35HyIlwiwiZpIeXeHgYUWuybnkBiuZKWjpXW77d6vynsSpaOrICaHyCOBjplsqOsFsUmFC/o7bqXa+KNp8P4amBXuE0jikWHAAvMEVmrUBEVp7EL/0F+FV2F0vMbuzJfUXwuxakcz4x32Hpq5VpEF56';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
@@ -762,6 +762,18 @@ body.touch.started .tap{display:block}
     const ok=()=>toast('E-mail copiado');const fail=()=>{const r=document.createRange();r.selectNodeContents(b.parentElement.querySelector('.v'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Selecione e copie o e-mail')};
     try{navigator.clipboard.writeText(v).then(ok,fail)}catch(err){fail()}}));
   /* o ambiente só anima na cena visível */
+
+  /* vídeos do mosaico: carregam perto da cena, tocam só na cena ativa */
+  (function(){const vids=[...document.querySelectorAll('video.vid')];if(!vids.length)return;
+    function arm(v){if(v.dataset.vsrc){v.src=v.dataset.vsrc;delete v.dataset.vsrc;v.preload='auto';v.load()}}
+    vids.forEach(v=>{v.addEventListener('playing',()=>v.classList.add('ok'));v.addEventListener('error',()=>v.classList.remove('ok'))});
+    const sc=document.getElementById('s7');if(!sc)return;
+    const idx=[...document.querySelectorAll('.scene')].indexOf(sc);
+    const mo=new MutationObserver(()=>{const on=sc.classList.contains('on');vids.forEach(v=>{if(on&&!reduce){arm(v);const p=v.play();p&&p.catch(()=>{})}else if(!on){v.pause()}})});
+    mo.observe(sc,{attributes:true,attributeFilter:['class']});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)vids.forEach(v=>v.pause());else if(sc.classList.contains('on')&&!reduce)vids.forEach(v=>{const p=v.play();p&&p.catch(()=>{})})});
+    window.__armVids=arm;window.__vidScene=idx;window.__vids=vids;
+  })();
   /* vidro 3D: inclinação e reflexo seguem o mouse */
   const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
   $$('.g3,.btn').forEach(el=>{let raf=0,ev=null;
