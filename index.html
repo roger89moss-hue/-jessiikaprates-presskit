@@ -453,9 +453,9 @@ body.touch.started .tap{display:block}
 .P .btn.wa span span[style*="28px"]{font-size:22px!important}
 .P .links{grid-template-columns:1fr;gap:10px}
 .P .lk.em .v{font-size:14px;letter-spacing:-.01em}
-.P #s9 .bgi{object-position:center top}
-.P #stage #s9 .col{justify-content:flex-end;padding-top:230px}
-.P #s9 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.1) 0,rgba(7,8,12,.55) 42%,rgba(7,8,12,.95) 68%,var(--bg) 100%)}
+.P #s9 .bgi{object-position:center 12%;height:64%}
+.P #stage #s9 .col{justify-content:flex-end;padding-top:430px}
+.P #s9 .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.05) 0,rgba(7,8,12,.2) 34%,rgba(7,8,12,.9) 50%,var(--bg) 62%)}
 
 @media (prefers-reduced-motion:reduce){
   .rv,.scene,.bgi,.eb:before,.g3,.wipe,.cut,.fr img,.mosaic img{transition:none!important;transform:none!important;clip-path:none!important}
@@ -731,7 +731,7 @@ body.touch.started .tap{display:block}
   setTimeout(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,250)})()},900);
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='zc8oN1BczdTQCoiT5V9Mj/x8bs6DHVsDTvNqc26XuaBBhi00Hm4M0IWLfxbZJTf+vueXRleAj53hX5N5CFMjezwTVWjoEUprMpfLZDSg+Ahkwq9iL0kuiyVOnGXYS0kqP28BR2WVuolgHZrD6gRKqZmG';
+  const RIDER='D7xy53ZdjQrZWW3mtrfewH6wCRRIpn6bPlR8h8A7tl03S2AOpp6qUrCf/OvIIyZN9eh7Bx3cbt49vYQY2bdh9Th0oT8UQcGKahfCnIck9m1qROKFhiwcWZ4F+Bd5MsyvUNDoIzBFZYHqXHGe2S7BFW9+';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
