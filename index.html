@@ -317,9 +317,9 @@ p b{color:#fff;font-weight:800}
 .P #pin .cells i{width:52px;height:60px}
 /* 9 logo Front da Prates */
 .quote{border-left:4px solid #3d7bff;padding-left:22px;font-size:20px;font-weight:700;line-height:1.45;color:#fff}
-.fdp{position:relative;margin:-10px 0 -6px -14px;width:620px}
+.fdp{position:relative;margin:-6px 0 10px -10px;width:540px}
 .fdp:before{content:"";position:absolute;inset:16% 10%;border-radius:50%;background:radial-gradient(closest-side,rgba(61,123,255,.5),rgba(61,123,255,0));filter:blur(28px);pointer-events:none}
-.fdp img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(31,95,255,.35))}
+.fdp img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(31,95,255,.35));opacity:0}.on .fdp img{animation:fdpop .55s cubic-bezier(.2,.9,.25,1) .35s both}@keyframes fdpop{0%{opacity:0;transform:scale(1.22);filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(31,95,255,.35)) brightness(2.2)}55%{opacity:1;transform:scale(.975);filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(61,123,255,.7)) brightness(1.25)}100%{opacity:1;transform:none;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(31,95,255,.35)) brightness(1)}}.fdp .fsheen{position:absolute;inset:0;-webkit-mask:url(assets/front_logo.webp) center/contain no-repeat;mask:url(assets/front_logo.webp) center/contain no-repeat;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.98) 50%,rgba(95,211,255,.55) 55%,transparent 64%);background-size:260% 100%;background-position:108% 0;mix-blend-mode:screen;opacity:0;pointer-events:none}.on .fdp .fsheen{animation:fsheen 1s cubic-bezier(.4,0,.3,1) .95s 1 both}@keyframes fsheen{0%{opacity:1;background-position:108% 0}92%{opacity:1}100%{opacity:0;background-position:-8% 0}}
 .fdp .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .light .lk{background:rgba(255,255,255,.66);border-color:rgba(0,0,0,.1);color:#0b0b10}.light .lk .lbl{color:#5b616c}.light .copy{border-color:rgba(0,0,0,.18);color:#0b0b10}
 /* 14 encerramento */
@@ -406,7 +406,7 @@ body.touch.started .tap{display:block}
 
 /* retrato: cenas novas */
 .P #stage .col{min-height:0;flex:none}
-.P .fdp{width:100%;margin:0}
+.P .fdp{width:92%;margin:0 0 6px}
 .P #stage #s1 .col{min-height:100%}
 .P .cut{position:static!important;height:auto!important;width:auto!important;max-height:340px;max-width:88%;object-fit:contain;object-position:right bottom;align-self:flex-end;margin:22px 0 -26px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6));left:auto!important;right:auto!important;bottom:auto!important}
 .P .shade.l{background:linear-gradient(180deg,rgba(7,8,12,.3) 0,rgba(7,8,12,.78) 38%,rgba(7,8,12,.9) 100%)}
@@ -459,6 +459,7 @@ body.touch.started .tap{display:block}
 
 @media (prefers-reduced-motion:reduce){
   .rv,.scene,.bgi,.eb:before,.g3,.wipe,.cut,.fr img,.mosaic img{transition:none!important;transform:none!important;clip-path:none!important}
+  .fdp img{opacity:1;animation:none!important}.fdp .fsheen{display:none}
   .rv,.cut{opacity:1}.amb .beam,.amb .glow,.rays,.pulse,.eq i,.gt *,.hint .arr,.sheen{animation:none!important}.eq i{transform:none}#cur{display:none}
 }
 </style>
@@ -584,7 +585,7 @@ body.touch.started .tap{display:block}
 <div class="frame">
 <div class="col" style="width:640px;gap:22px">
 <div class="eb rv" style="--d:100">08 · Comunidade</div>
-<h2 class="fdp rv up" style="--d:250"><img data-src="assets/front_logo.webp" alt="Front da Prates" width="1400" height="853"><span class="sr">Front da Prates</span></h2>
+<h2 class="fdp"><img data-src="assets/front_logo.webp" alt="Front da Prates" width="2000" height="1219"><span class="fsheen" aria-hidden="true"></span><span class="sr">Front da Prates</span></h2>
 <p class="rv" style="--d:500">Quem acompanha a Jessiika já conhece a Front da Prates: a galera que marca presença nas apresentações, acompanha o trabalho pelas redes e faz questão de estar pertinho do palco.</p>
 <div class="quote rv" style="--d:750">“Sempre levo comigo esse carinho e positividade que recebo de vocês, que faz tanta diferença.”</div>
 <div class="lbl rv" style="--d:950;margin-top:6px">Faça parte</div>
@@ -730,7 +731,7 @@ body.touch.started .tap{display:block}
   setTimeout(()=>{let n=0;(function next(){while(n<N&&!scenes[n].querySelector('img[data-src]'))n++;if(n>=N)return;load(scenes[n]);setTimeout(next,250)})()},900);
 
   /* rider com PIN: o link fica cifrado na página e só abre com o PIN certo */
-  const RIDER='eltyk0HSoV5vmUFHScgFA7A3hrI70K9+L5+mYWJfy4800CPbzwKht4IlOLrxUnEA/BtQp0u6COYPWCyPzIykkx6X1ZJbW/ygW99sMY/oYAk4zsXyiuXOg/F5WDJIipvoYqdSUw2NUTfi1XHXGfmawHFE';
+  const RIDER='zc8oN1BczdTQCoiT5V9Mj/x8bs6DHVsDTvNqc26XuaBBhi00Hm4M0IWLfxbZJTf+vueXRleAj53hX5N5CFMjezwTVWjoEUprMpfLZDSg+Ahkwq9iL0kuiyVOnGXYS0kqP28BR2WVuolgHZrD6gRKqZmG';
   const pin=$('#pin'),pinin=$('#pinin'),cells=$$('#pin .cells i');let pinBusy=false;
   function openPin(){pin.classList.add('open');pin.classList.remove('done');pinin.value='';draw();setTimeout(()=>pinin.focus(),50)}
   function closePin(){pin.classList.remove('open')}
